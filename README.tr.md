@@ -10,8 +10,21 @@ Yazılım ürünleri yayımlayan bağımsız bir publisher.
 |---|---|---|:---:|
 | **Disk Cleaner** | Linux için süreç-farkındalıklı güvenli disk temizleyici | [codechu/disk-cleaner](https://github.com/codechu/disk-cleaner) | 0.1 beta |
 
-_(Geliştirme aşamasında başka ürünler de var. Lisans modeli, hedef
-platform ve dağıtım kanalı ürüne göre değişir.)_
+Lisans modeli, hedef platform ve dağıtım kanalı ürüne göre değişir.
+
+## Yeniden kullanılabilir library'ler
+
+Codechu ürünlerinden bağımsız library olarak çıkarılmış bileşenler — Codechu
+dışı projeler de dahil her projede kullanılabilir.
+
+| Library | Dil | PyPI / dist | Repo |
+|---|---|---|---|
+| **codechu-events** — Çok-kanallı, thread-safe event bus | Python | `codechu-events` | [events-py](https://github.com/codechu/events-py) |
+| **codechu-treeviz** — Squarified treemap + sunburst layout | Python | `codechu-treeviz` | [treeviz-py](https://github.com/codechu/treeviz-py) |
+| **codechu-xdg** — Vendor-namespace'li XDG path'leri (Linux) | Python | `codechu-xdg` | [xdg-py](https://github.com/codechu/xdg-py) |
+
+Repo adları dil soneki taşır (`-py`, `-rs`, `-go`, vb.) — böylece aynı
+fikrin polyglot implementasyonları yan yana yaşayabilir.
 
 ## Bu repo nedir
 

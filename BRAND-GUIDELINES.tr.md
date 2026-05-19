@@ -80,7 +80,7 @@ Notion / Linear / Vercel paterni.
 | Dosya | Kullanım |
 |---|---|
 | `assets/logo/mark.svg` | Tam renkli mark |
-| `assets/logo/mark-knockout.svg` | Koyu zeminde — beyaz + altın aksent |
+| `assets/logo/mark-knockout.svg` | Koyu zeminde için ters (inverted) |
 | `assets/logo/mark-mono.svg` | Tek renk, `currentColor` (sistem tray, B&W print) |
 | `assets/logo/wordmark.svg` | Sadece tipografi |
 | `assets/logo/lockup-horizontal.svg` | Mark + wordmark yan yana |
