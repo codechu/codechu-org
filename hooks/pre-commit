@@ -1,0 +1,144 @@
+#!/usr/bin/env bash
+# Codechu shared pre-commit hook — Python AST tabanlı i18n leak guard +
+# conflict marker + large-file warn + .mo sync hint.
+#
+# Kurulum (her ürün repo'sunda):
+#   cp /path/to/codechu-org/hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+#
+# Atlama: git commit --no-verify (sadece acil)
+
+set -e
+FAILED=0
+
+# ─── 1. i18n leak guard (Python AST) ─────────────────────────────────
+# Source kodda Türkçe-spesifik karakter içeren string literal varsa,
+# docstring değilse, _()-wrapped değilse fail.
+# Bilinen kasıtlı literal'lar exemption list'inde.
+SRC_DIR=${SRC_DIR:-}
+if [ -z "$SRC_DIR" ]; then
+    for candidate in disk_cleaner src lib; do
+        [ -d "$candidate" ] && SRC_DIR="$candidate" && break
+    done
+fi
+
+if [ -n "$SRC_DIR" ] && [ -d "$SRC_DIR" ] && command -v python3 >/dev/null; then
+    LEAKS=$(python3 - "$SRC_DIR" <<'PY'
+import ast
+import os
+import re
+import sys
+
+TURKISH = re.compile(r'[şŞıİğĞçÇöÖüÜ]')
+
+# Kasıtlı Türkçe literal'lar (UI dışı, source code mantığı için)
+EXEMPT_LITERALS = {
+    "Türkçe",       # native language name for picker
+    "AKTİF",        # backward-compat data marker
+    "İndirilenler", # standard Turkish locale dir name (file path)
+    "Resimler",     # standard Turkish locale dir name
+}
+
+EXEMPT_FILES = {"i18n.py"}  # i18n wrapper has Turkish examples in comments
+
+src = sys.argv[1]
+problems = []
+
+for root, _, files in os.walk(src):
+    for f in files:
+        if not f.endswith(".py"):
+            continue
+        if f in EXEMPT_FILES:
+            continue
+        path = os.path.join(root, f)
+        try:
+            with open(path, encoding="utf-8") as fp:
+                source = fp.read()
+            tree = ast.parse(source)
+        except SyntaxError:
+            continue
+
+        # Map: docstring node IDs (skip them)
+        docstring_ids = set()
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+                ds = ast.get_docstring(node, clean=False)
+                if ds and node.body:
+                    first = node.body[0]
+                    if isinstance(first, ast.Expr) and isinstance(first.value, ast.Constant):
+                        docstring_ids.add(id(first.value))
+
+        # _()-wrapped IDs (gettext call)
+        wrapped_ids = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Call):
+                fname = ""
+                if isinstance(node.func, ast.Name):
+                    fname = node.func.id
+                elif isinstance(node.func, ast.Attribute):
+                    fname = node.func.attr
+                if fname in ("_", "gettext", "ngettext", "pgettext"):
+                    for arg in node.args:
+                        if isinstance(arg, ast.Constant):
+                            wrapped_ids.add(id(arg))
+
+        # Walk string Constants
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Constant):
+                continue
+            if not isinstance(node.value, str):
+                continue
+            if id(node) in docstring_ids or id(node) in wrapped_ids:
+                continue
+            text = node.value
+            if not TURKISH.search(text):
+                continue
+            if text in EXEMPT_LITERALS:
+                continue
+            # Substring of exempt literal? (örn. "AKTİF proje" — kısmi compat)
+            if any(lit in text for lit in EXEMPT_LITERALS):
+                continue
+            problems.append(f"{path}:{node.lineno}: {text!r}")
+
+for p in problems:
+    print(p)
+PY
+)
+    if [ -n "$LEAKS" ]; then
+        echo "✗ i18n leak: Türkçe string literal — _() ile sar veya EXEMPT_LITERALS'a ekle:"
+        echo "$LEAKS"
+        FAILED=1
+    fi
+fi
+
+# ─── 2. Conflict marker / whitespace check ──────────────────────────
+if ! git diff --cached --check >/dev/null 2>&1; then
+    echo "✗ Whitespace error or conflict marker:"
+    git diff --cached --check
+    FAILED=1
+fi
+
+# ─── 3. Large file warn (>1MB) ─────────────────────────────────────
+big=$(git diff --cached --name-only --diff-filter=A | \
+      xargs -I{} sh -c 'test -f "{}" && find "{}" -size +1M 2>/dev/null' 2>/dev/null | head -5)
+if [ -n "$big" ]; then
+    echo "⚠ Büyük dosya eklenmiş (>1MB) — git LFS düşün:"
+    echo "$big"
+fi
+
+# ─── 4. .po → .mo sync hint ─────────────────────────────────────────
+if [ -d "po" ] && [ -f "po/messages.pot" ]; then
+    if git diff --cached --name-only | grep -q "po/.*\.po$"; then
+        if ! git diff --cached --name-only | grep -q "locale/.*\.mo$"; then
+            echo "⚠ .po değişti ama .mo regenerate edilmedi — 'cd po && make compile'"
+        fi
+    fi
+fi
+
+if [ "$FAILED" = "1" ]; then
+    echo
+    echo "Commit reddedildi. Düzeltip tekrar deneyin (veya --no-verify acil durumda)."
+    exit 1
+fi
+
+exit 0

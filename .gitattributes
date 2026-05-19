@@ -1,0 +1,8 @@
+# Otomatik LF normalize
+* text=auto eol=lf
+
+# Binary
+*.png binary
+*.jpg binary
+*.svg text eol=lf
+
