@@ -65,6 +65,12 @@ kardeş repo olarak yaşayabilir, her biri kendi SemVer hattıyla.
 tanımlayıcılarında (binary, dosya adı) kısa form OK — namespace
 çakışması yoksa.
 
+**Plugin family'ler**: bir library'nin temiz bir core'u var ama hepsi
+birlikte gönderilmesi gerekmeyen variant data ya da adapter'ları varsa
+(font'lar, locale paketleri, codec'ler), core paket + kardeş
+`codechu-<thing>-<variant>` plugin paketleri olarak ayır. Her variant
+kendi data'sını, lisansını, release döngüsünü taşır.
+
 ## 3. Dosya sistemi yerleşimi (uygulanabildiğinde)
 
 Diskte kullanıcı verisi tutan ürünler vendor namespace kullanmalı.

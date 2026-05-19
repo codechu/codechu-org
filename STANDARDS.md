@@ -63,6 +63,12 @@ abstraction, telemetry). The suffix lets `codechu/events-py` and
 for end-user identifiers (binary, file name) unless there's namespace
 collision.
 
+**Plugin families**: when a library has a clean core but variant data
+or adapters that don't all ship together (fonts, locale packs, codecs),
+split into a core package + sibling `codechu-<thing>-<variant>` plugin
+packages that depend on the core. Each variant carries its own data,
+license, and release cadence.
+
 ## 3. Filesystem layout (when applicable)
 
 Products that store user data on disk should use the vendor namespace.
