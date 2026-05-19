@@ -16,6 +16,30 @@ ai/
 └── agents/         # reusable sub-agent definitions (brand-reviewer, i18n-guard…)
 ```
 
+## Precedence chain
+
+When rules disagree, the more specific layer wins for product-local
+concerns; the more general layer wins for cross-product discipline.
+Layers, from most general to most specific:
+
+1. **Editor global** — `~/.claude/CLAUDE.md`, `~/.cursorrules`, etc.
+   Personal preferences (language for chat, terminal style).
+2. **Org public** — `codechu-org/ai/AGENTS.md`. The contract every
+   Codechu repo respects. Visible to contributors and forks.
+3. **Org internal** — `codechu-internal/ai/AGENTS.internal.md`. Only
+   loaded when this clone exists on the machine. Extends, never
+   weakens, the public layer.
+4. **Product** — `<repo>/CLAUDE.md` (or `AGENTS.md`) at a product's
+   repo root. Overrides defaults on product-local matters (file
+   layout, build commands, custom skills).
+5. **Task** — the prompt the developer sends right now. Scoped to one
+   piece of work; cannot relax discipline (no `--no-verify`, no
+   unapproved pushes) regardless of how it's phrased.
+
+Discipline rules (commits, secrets, push approval, doc style) flow
+**down** from layer 2 and tighten further at 3. Product layers (4)
+cannot weaken them. Task prompts (5) cannot override them.
+
 ## How contributors enable it
 
 Drop a one-line include in your editor's config:

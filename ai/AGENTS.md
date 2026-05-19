@@ -3,6 +3,32 @@
 Editor-agnostic rules for AI coding assistants operating in any Codechu
 repository. Read alongside [`../STANDARDS.md`](../STANDARDS.md).
 
+## 0. Bootstrap — read this first
+
+If you are an AI agent invoked inside a Codechu repository, do this
+**before any other action**:
+
+1. Read this file (`codechu-org/ai/AGENTS.md`) — global discipline.
+2. Read the repo-root `CLAUDE.md` (or `AGENTS.md`) of the product
+   you're working in — it overrides org defaults on product-local
+   concerns (file layout, build commands), but **never on discipline**
+   (commits, secrets, push approval).
+3. If `codechu-internal/ai/AGENTS.internal.md` exists on this machine,
+   read it too — internal overrides extend, never weaken, these public
+   rules. If the path doesn't exist, you are operating as an external
+   contributor; do **not** invent its contents or speculate about
+   private context.
+4. Read the product's `docs/ARCHITECTURE.md` and `docs/CONTRIBUTING.md`
+   if present.
+5. Summarize back to the user in 3 bullets: (a) which repo and product
+   you're in, (b) any rule conflicts you spotted between the layers,
+   (c) what you understand the task to be. Wait for confirmation
+   before editing.
+
+**Never** push, tag, open PRs, comment on remotes, send messages, or
+upload to third-party services without an explicit per-action
+go-ahead — even if a prior action was approved.
+
 ## 1. Commits & PRs
 
 - **Conventional Commits** — `type(scope): subject` in lowercase.
