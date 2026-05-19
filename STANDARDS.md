@@ -234,16 +234,50 @@ Industry practice: most independent studios use a similar model.
 
 ## 11. Internationalization (optional)
 
-Products may or may not internationalize. If they do:
+### Products
+
+Products (end-user applications) may or may not internationalize. If
+they do:
 
 - Canonical source language is **English**
-- Translations live in product-repo's translation directory (e.g. `po/`,
-  `locales/`, `i18n/`)
+- Translations live in the product-repo's translation directory
+  (e.g. `po/`, `locales/`, `i18n/`)
 - A Turkish translation is encouraged but not mandatory (most Codechu
   projects ship one because contributors are Turkish-speaking)
 - Other languages are community-driven
 
 Each product's i18n workflow lives in `docs/I18N.md`.
+
+### Libraries
+
+Libraries published under `codechu/` **do not localize their output**.
+
+- Exception messages, log messages, and developer-facing diagnostics
+  are written in English, hard-coded. They are diagnostic, not UI;
+  they must stay greppable, searchable, and stable across locales.
+- Libraries do not produce user-facing strings. They expose semantic
+  data (markers, enums, counts, type fields) and let the consuming
+  application render and translate.
+- Libraries do not ship `gettext`, `.po` files, or any translation
+  infrastructure.
+
+**Carve-out:** if a library directly renders a UI surface the
+consuming application cannot intercept (CLI help generators, form
+widgets, terminal scaffolds), it may either: (a) translate internally
+with a documented locale-resolution policy, or (b) accept a translator
+callback via dependency injection. **(b) is preferred** — the library
+stays loosely coupled and the host application keeps control of its
+i18n stack.
+
+This matches the de-facto practice of `requests`, `pydantic`,
+`SQLAlchemy`, `pytest`, `structlog`, `tokio`, `serde`, and `lodash`.
+The Python stdlib's `argparse`/`optparse` and frameworks (Django,
+Flask, Click) fall under the carve-out — they own the final
+rendering surface to the user.
+
+Authoritative writeups: Microsoft .NET "Best practices for exceptions",
+the "Should exception messages be localized?" discussion in the jbe2277/waf
+wiki, and the API-craft mailing list consensus.
 
 ## 12. Living document
 

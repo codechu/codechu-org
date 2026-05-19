@@ -241,7 +241,10 @@ Sektör pratiği: bağımsız stüdyoların çoğu benzer modeli kullanır.
 
 ## 11. Uluslararasılaştırma (opsiyonel)
 
-Ürünler i18n yapabilir veya yapmayabilir. Yaparsa:
+### Ürünler
+
+Ürünler (son-kullanıcı uygulamaları) i18n yapabilir veya yapmayabilir.
+Yaparsa:
 
 - Kanonik kaynak dili **İngilizce**'dir
 - Çeviriler ürün repo'sunun çeviri dizininde yaşar (örn. `po/`,
@@ -251,6 +254,39 @@ Sektör pratiği: bağımsız stüdyoların çoğu benzer modeli kullanır.
 - Diğer diller community-driven
 
 Her ürünün i18n workflow'u `docs/I18N.md`'de.
+
+### Library'ler
+
+`codechu/` altında yayımlanan library'ler **çıktılarını lokalize
+etmez**.
+
+- Exception mesajları, log mesajları ve developer-facing diagnostic'ler
+  English, hard-coded yazılır. Bunlar UI değil, diagnostic'tir;
+  grep'lenebilir, aratılabilir ve locale'lar arası taşınabilir
+  olmalıdır.
+- Library'ler kullanıcıya çıkan metin üretmez. Semantic data döner
+  (marker'lar, enum'lar, count field'ları, type field'ları); render
+  + çeviri tüketen uygulamanın işidir.
+- Library'ler `gettext`, `.po` dosyası veya herhangi bir çeviri
+  altyapısı içermez.
+
+**İstisna:** bir library tüketen uygulamanın araya giremeyeceği bir
+UI surface'i doğrudan render ediyorsa (CLI help generator, form
+widget, terminal scaffold), iki seçeneği vardır: (a) belgelenmiş
+locale-resolution politikasıyla içeride çevirir, veya (b) dependency
+injection ile translator callback kabul eder. **(b) tercih edilir**
+— library loose coupling'i korur, host uygulama kendi i18n stack'i
+üzerinde kontrolü elinde tutar.
+
+Bu pratik sektörle uyumlu: `requests`, `pydantic`, `SQLAlchemy`,
+`pytest`, `structlog`, `tokio`, `serde`, `lodash` — hiçbiri library
+seviyesinde i18n yapmaz. Python stdlib'in `argparse`/`optparse`'i ve
+framework'ler (Django, Flask, Click) istisnanın altına girer — son
+rendering surface'ini onlar sahiplenir.
+
+Referanslar: Microsoft .NET "Best practices for exceptions",
+jbe2277/waf wiki'sindeki "Should exception messages be localized?"
+tartışması, API-craft mailing list uzlaşısı.
 
 ## 12. Canlı doküman
 

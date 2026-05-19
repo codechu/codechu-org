@@ -43,8 +43,13 @@ go-ahead — even if a prior action was approved.
 
 - **Code, comments, identifiers, log messages, exception text**:
   English.
-- **User-facing UI strings**: gettext (`_()`), source in English,
-  translations under `po/`.
+- **User-facing UI strings** (in products): gettext (`_()`), source
+  in English, translations under `po/`.
+- **Libraries do not do i18n.** No `_()`, no `gettext`, no `.po`
+  files. Expose semantic data (markers, enums, counts) and let the
+  consuming application render and translate. See
+  [`STANDARDS.md` §11 "Libraries"](../STANDARDS.md#libraries) for
+  the rationale and the rare carve-out.
 - **Repo docs**: English canonical (`FOO.md`), Turkish parallel
   (`FOO.tr.md`) — both kept in sync.
 - Conversation with the maintainer can be in any language; written
