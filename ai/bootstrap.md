@@ -1,12 +1,29 @@
-# Codechu bootstrap — public entry point
+# Codechu employee bootstrap — public entry point
 
 Single self-contained instruction set for an AI agent invoked by a
-developer on a fresh machine. **Designed to be applied verbatim**:
-a developer's only prompt is
+**Codechu org member** setting up a fresh machine. The developer's
+only prompt is:
 
 > Apply `codechu/codechu-org` repo's `ai/bootstrap.md`.
 
-The agent fetches this file (public — no auth needed) and follows it.
+The agent fetches this file (public — no auth needed) and follows
+it. The file is public so the agent can reach it without any
+credentials; the rest of the flow (cloning private repos, installing
+internal skills) requires Codechu org membership and is handled
+inside.
+
+## Not for external contributors
+
+If you are an external contributor working on a Codechu product
+(e.g., opening a PR against `codechu/disk-cleaner`):
+
+- You don't need this bootstrap.
+- Just `gh repo clone codechu/<product>`, `cd` into it, and open the
+  agent. The product's own `CLAUDE.md` handles everything you need —
+  it points the agent at this org's public `AGENTS.md` via WebFetch
+  for the conventions that apply to your contribution.
+- Don't attempt the org probe or clone `codechu-internal` — it's
+  private and not part of contributor workflows.
 
 ## Pre-flight — install and authenticate `gh`
 
@@ -48,15 +65,13 @@ Never write a token to disk. Never log a token.
 
 Run `gh api orgs/codechu --jq .login`.
 
-- **Success** → Employee path. Continue to "Employee bootstrap" below.
-- **404 / forbidden** → External contributor path. Continue to
-  "External contributor bootstrap" below.
+- **Success** → continue with the rest of this bootstrap.
+- **404 / forbidden** → the developer is not a Codechu member. Stop
+  and tell them: "This bootstrap is for Codechu employees. If you're
+  contributing to a public Codechu product, just clone that product
+  repo and open it — its `CLAUDE.md` handles the agent setup."
 
-## Employee bootstrap
-
-The developer is a Codechu org member. The internal layer applies.
-
-### Workspace discovery
+## Workspace discovery
 
 The "workspace" is a directory that holds (or will hold) `codechu-org/`
 and `codechu-internal/` as siblings. **Never confuse it with `$PWD`**
@@ -109,87 +124,14 @@ and follow it verbatim. That skill:
 - routes the current folder (`$PWD`) — empty → NEW PROJECT, codechu
   origin → EXISTING PROJECT, otherwise → ASK
 
-## External contributor bootstrap
-
-The developer is **not** a Codechu org member. Only the public layer
-applies.
-
-### Workspace discovery (public-only)
-
-Same discovery order as the employee path, but looking only for
-`codechu-org/`:
-
-1. `$CODECHU_ORG_HOME` env var
-2. `~/.config/codechu/config.toml`'s `org_home`
-3. Walk up from `$PWD` looking for sibling `codechu-org/`
-4. Ask, defaulting to `$PWD/..`
-
-### Clone `codechu-org` only
-
-```bash
-cd "$WORKSPACE"
-[ -d codechu-org ] || gh repo clone codechu/codechu-org
-```
-
-Do **not** attempt to clone `codechu-internal` — the developer
-already failed the org probe and shouldn't see 404 errors.
-
-### Wire public skills + agents
-
-```bash
-mkdir -p ~/.claude/skills ~/.claude/agents
-for src in "$WORKSPACE"/codechu-org/ai/skills/*.md; do
-  [ -e "$src" ] && ln -sf "$src" ~/.claude/skills/$(basename "$src")
-done
-for src in "$WORKSPACE"/codechu-org/ai/agents/*.md; do
-  [ -e "$src" ] && ln -sf "$src" ~/.claude/agents/$(basename "$src")
-done
-```
-
-### Append the public-only bootstrap clause to `~/.claude/CLAUDE.md`
-
-Guarded by a marker; idempotent on re-runs.
-
-```bash
-mkdir -p ~/.claude
-MARKER="<!-- codechu-bootstrap -->"
-if ! grep -qF "$MARKER" ~/.claude/CLAUDE.md 2>/dev/null; then
-  cat >> ~/.claude/CLAUDE.md <<EOF
-
-<!-- codechu-bootstrap -->
-## Codechu repos (external contributor)
-
-\`org_home\` for this machine: \`$WORKSPACE\`. When the cwd is inside
-any clone of a \`codechu/*\` repo, bootstrap per
-\`codechu-org/ai/AGENTS.md\` §0 at session start without being asked:
-
-1. Read \`\$org_home/codechu-org/ai/AGENTS.md\`.
-2. Read the current repo's \`CLAUDE.md\` if present.
-3. State the loaded layers in one short line at the start of the
-   first response.
-
-For local git operations (commit, branch, edits) proceed without
-pausing. Before remote push, tag push, opening PRs, or external
-messages, always show a summary and wait for explicit approval.
-<!-- /codechu-bootstrap -->
-EOF
-fi
-```
-
-### Route the current folder
-
-Same routing rules as the employee path (NEW PROJECT / EXISTING
-PROJECT / ASK), but without the internal overrides layer.
-
-## Final report (both paths)
+## Final report
 
 End with a short status block:
 
 ```
 ✓ gh: <version> (auth: <username>)
 ✓ Workspace: <absolute path>
-✓ Mode: <employee | external contributor>
-✓ Skills installed: <count>
+✓ Skills installed: <count> (from codechu-org + codechu-internal)
 ✓ CLAUDE.md bootstrap clause: present
 → Route: <new-project | existing-project | asked | none>
 ```
