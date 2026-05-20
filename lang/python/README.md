@@ -8,6 +8,7 @@ library extractions.
 |---|---|
 | [LIBRARY.md](LIBRARY.md) | Starting or maintaining a `codechu-*` library published to PyPI |
 | [APPLICATION.md](APPLICATION.md) | Starting or maintaining a Python end-user app (e.g. `disk-cleaner`) |
+| [PROPRIETARY.md](PROPRIETARY.md) | Starting or maintaining a **closed-source** Python library or app (private repo, license keys, signed wheels, etc.) |
 
 These extend, never weaken, the org-wide rules in
 [`STANDARDS.md`](../../STANDARDS.md) and the language-agnostic

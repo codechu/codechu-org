@@ -187,6 +187,24 @@ A Codechu product may be:
 Each product's LICENSE declares its terms. There is no "Codechu default
 license" — the choice belongs to product strategy.
 
+For closed-source / source-available products see the dedicated
+project-type guides:
+
+- [`project-type/PROPRIETARY-LIBRARY.md`](project-type/PROPRIETARY-LIBRARY.md)
+  — closed-source libraries, license model selection
+  (PolyForm / BUSL / proprietary), customer-facing API contract,
+  promotion workflow from `codechu-internal/`.
+- [`project-type/PROPRIETARY-APPLICATION.md`](project-type/PROPRIETARY-APPLICATION.md)
+  — closed-source applications, EULA, license-key / activation,
+  signed auto-update, code obfuscation trade-offs.
+- Python-specific extras:
+  [`lang/python/PROPRIETARY.md`](lang/python/PROPRIETARY.md).
+
+Legal templates (MIT, PolyForm, BUSL, EULA, source-file headers)
+live in `codechu-internal/legal/`. The Codechu-wide telemetry policy
+lives in `codechu-internal/telemetry/POLICY.md` and applies to both
+open and closed products.
+
 ## 10. Public vs private repository discipline
 
 Codechu uses a two-tier repo model. Public repos hold released, curated
