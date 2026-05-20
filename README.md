@@ -46,12 +46,28 @@ This repo does **not** hold:
 
 ## Contents
 
+Three layers, narrowing in scope:
+
+```
+STANDARDS.md                         org-wide, language + project-type agnostic
+TEMPLATE-CHECKLIST.md                generic bootstrap for any new product
+project-type/
+├── LIBRARY.md                       any library, any language
+└── APPLICATION.md                   any app, any language
+lang/
+└── python/
+    ├── LIBRARY.md                   Python library (PyPI publish, ruff, pytest)
+    └── APPLICATION.md               Python app (GTK / Snap / Flatpak)
+```
+
 | File | Purpose |
 |---|---|
-| [STANDARDS.md](STANDARDS.md) | Discipline rules applied across Codechu products |
+| [STANDARDS.md](STANDARDS.md) | Discipline rules across all Codechu products |
 | [STANDARDS.tr.md](STANDARDS.tr.md) | Türkçe paralel |
 | [TEMPLATE-CHECKLIST.md](TEMPLATE-CHECKLIST.md) | New-product bootstrap procedure |
 | [TEMPLATE-CHECKLIST.tr.md](TEMPLATE-CHECKLIST.tr.md) | Türkçe paralel |
+| [project-type/](project-type/) | Library vs application conventions (language-agnostic) |
+| [lang/](lang/) | Per-language extensions (Python today, more coming) |
 | [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md) | Shared palette / typography / logo grammar |
 | [BRAND-GUIDELINES.tr.md](BRAND-GUIDELINES.tr.md) | Türkçe paralel |
 | [hooks/](hooks/) | Optional shared git hooks |

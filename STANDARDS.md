@@ -291,16 +291,25 @@ When a new product surfaces an edge case, update this file via PR. A PR
 touching `STANDARDS.md` should be tagged **breaking change** in the
 title — it may ripple to all product repos.
 
-## 13. Active repositories
+## 13. Layered conventions
+
+This file is the language-agnostic, org-wide layer. Two narrower
+layers extend it:
+
+| Layer | Path | Scope |
+|---|---|---|
+| Project type | [`project-type/`](project-type/) | Library vs application, any language |
+| Language | [`lang/<name>/`](lang/) | Per-language extensions (Python today) |
+
+Read in order: STANDARDS → project-type → lang.
+
+## 14. Active repositories
 
 ### Organization-wide
 - [codechu/codechu-org](https://github.com/codechu/codechu-org) — this repo (PUBLIC, standards)
 - `codechu/internal` 🔒 — strategy, drafts, finance (PRIVATE)
 
-### Products
-See [README.md](README.md) for the current product roster.
-
-### Reusable libraries (Python)
-- [codechu/events-py](https://github.com/codechu/events-py) — `codechu-events` — multi-channel thread-safe event bus
-- [codechu/treeviz-py](https://github.com/codechu/treeviz-py) — `codechu-treeviz` — squarified treemap + sunburst layout
-- [codechu/xdg-py](https://github.com/codechu/xdg-py) — `codechu-xdg` — vendor-namespaced XDG paths
+### Products + libraries
+See [README.md](README.md) for the current roster. Per-language
+library conventions live under [`lang/python/`](lang/python/) (and
+future sibling directories as other languages come online).

@@ -4,6 +4,13 @@ Step-by-step procedure for starting a new Codechu product. Independent of
 language, platform, license — only identity, repo, branding, and process
 items are mandated. Technology choices belong to the product team.
 
+For language- or project-type-specific extensions of this checklist, see:
+
+- [`project-type/LIBRARY.md`](project-type/LIBRARY.md) — any library
+- [`project-type/APPLICATION.md`](project-type/APPLICATION.md) — any app
+- [`lang/python/LIBRARY.md`](lang/python/LIBRARY.md) — Python library (incl. PyPI publish)
+- [`lang/python/APPLICATION.md`](lang/python/APPLICATION.md) — Python app
+
 ## 0. Decision gate (block if undone)
 
 - [ ] Product name decided (`kebab-case`, max 2 words)
