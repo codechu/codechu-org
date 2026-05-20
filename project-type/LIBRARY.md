@@ -85,15 +85,92 @@ Every library ships:
 
 | File | Required when |
 |---|---|
-| `README.md` | Always — banner, tagline, install, quick example, links |
+| `README.md` | Always — **vitrine** (see [STANDARDS §7.1](../STANDARDS.md#71-readme-is-the-vitrine)) |
 | `docs/API.md` | Always — full public-symbol reference |
 | `docs/RECIPES.md` | Always — ≥5 idiomatic usage patterns |
 | `docs/MIGRATION.md` | After the first breaking version |
+| `docs/ARCHITECTURE.md` | When internal layering, threading model, or non-obvious data flow benefits from a diagram |
 | `CHANGELOG.md` | Always — Keep a Changelog format |
+| `assets/preview.svg` (or Mermaid in README) | By v0.1.0 — no text-only READMEs |
 
 `API.md` is a reference (every public symbol, signature, brief
 description). `RECIPES.md` is a cookbook (how to do common things end
-to end).
+to end). `ARCHITECTURE.md` is the design rationale and diagrams.
+
+### 6.1 Library README skeleton
+
+The vitrine principle in [STANDARDS §7.1](../STANDARDS.md#71-readme-is-the-vitrine)
+applies to libraries with this concrete skeleton:
+
+```markdown
+[banner — optional ASCII or SVG image]
+
+[![PyPI](...)] [![Python](...)] [![CI](...)] [![License](...)]
+
+> *one-line tagline in italic quote*
+
+# package-name
+
+[1–3 sentence value proposition — what + who + why]
+
+[ONE hero visual: <img src="assets/preview.svg"> for visual libs,
+ or a fenced ```mermaid block for non-visual libs]
+
+```bash
+pip install package-name
+```
+
+```python
+# 5–15 line "wow" example
+```
+
+## What you get
+
+- capability bullet 1
+- capability bullet 2
+- capability bullet 3
+   (3–8 bullets total; capabilities, NOT API signatures)
+
+## Read more
+
+- [API reference](docs/API.md) — every public symbol
+- [Recipes](docs/RECIPES.md) — idiomatic patterns
+- [Architecture](docs/ARCHITECTURE.md) — internal design *(when applicable)*
+- [Migration guide](docs/MIGRATION.md) — between major versions *(when applicable)*
+- [Changelog](CHANGELOG.md)
+
+## Family
+
+| Package | What it does |
+|---|---|
+| [codechu-sibling-1](https://pypi.org/project/codechu-sibling-1/) | one-line |
+| [codechu-sibling-2](https://pypi.org/project/codechu-sibling-2/) | one-line |
+   (3–6 entries — most-relevant siblings)
+
+## Credits
+
+- 1–3 inspirations or acknowledgements
+
+## License
+
+[License name] — see [LICENSE](LICENSE).
+
+Part of [Codechu](https://github.com/codechu).
+```
+
+**Library-specific hero requirements:**
+
+| Library category | Hero requirement |
+|---|---|
+| Visual output (CLI rendering, charts, glyphs) | asciinema cast as SVG, or PNG terminal screenshot |
+| Layout / geometry | Mermaid or hand-drawn diagram of input → output |
+| Data / structure | Mermaid class or ER-style diagram, or small input → output table |
+| System / IO (fs, ipc, xdg) | ASCII tree (filesystem) or Mermaid sequence (protocol) |
+| Behavior / orchestration (events, log, config) | Mermaid sequence or state diagram |
+| Formatters / measurement (fmt, meter) | Compact input → output table |
+
+The exact tool is the author's choice; the requirement is that **the
+hero communicates the value before the user reads any prose**.
 
 ## 7. Testing & coverage
 

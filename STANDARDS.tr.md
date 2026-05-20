@@ -142,14 +142,15 @@ Detay: [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md).
 Bu dosyalar beklenir; **içerik ürüne göre değişir**.
 
 ```
-README.md                  # kanonik, İngilizce
+README.md                  # kanonik, İngilizce — **vitrin** (bkz. §7.1)
 README.tr.md               # opsiyonel, Türkçe paralel
 LICENSE                    # ürünün taşıdığı lisans
 CHANGELOG.md               # Keep a Changelog formatı
 CONTRIBUTING.md            # katkıcı onboarding (veya "kapalı katkı" notu)
 SECURITY.md                # güvenlik açığı bildirimi (kapalı kaynak için de)
 CODE_OF_CONDUCT.md         # Contributor Covenant v2.1 referansı (OSS) veya iç sürüm
-docs/                      # detay dokümantasyon
+docs/                      # detay dokümantasyon — manual, referans, recipe
+assets/                    # banner, demo cast, diagram, ekran görüntüsü
 .github/                   # GitHub-spesifik (template, workflow)
 ```
 
@@ -159,8 +160,58 @@ Branding, packaging veya i18n olan ürünler için ek:
 docs/BRAND.md, docs/I18N.md, docs/VERSIONING.md, docs/PUBLISHING.md
 packaging/                 # platform-spesifik kurulum artifact'leri
 po/                        # gettext çevirileri (kullanılıyorsa)
-assets/                    # logo, ikon, ekran görüntüsü, social-preview
 ```
+
+### 7.1 README vitrin
+
+Kök `README.md` bir **vitrin**dir, kullanım kılavuzu değil. Bir
+ziyaretçinin PyPI'da, GitHub aramasında veya registry sayfasında
+gördüğü ilk şey — son söz değil, ilk izlenim. Buna göre davran.
+
+**İlkeler:**
+
+- **Tek çarpıcı görsel** üstte — demo cast (asciinema / SVG / GIF),
+  ekran görüntüsü veya temiz bir diyagram. Projenin ekran çıktısı
+  varsa *göster*. Yoksa, veri akışı / mimari için bir Mermaid veya
+  ASCII diyagram doyurucu bir alternatiftir. Düz metin duvarı kabul
+  edilemez.
+- **Tek hızlı örnek**, 5–15 satır, kurulumdan hemen sonra
+  çalıştırılabilir olsun. Her varyantı sıralama.
+- **Yetenek bullet'ları**, API tabloları değil. README *yapabildiklerini*
+  listeler; `docs/API.md` *her public sembolü* listeler.
+- **`docs/`'a yönlendir** — API referansı, recipe'ler, migration,
+  mimari için. Her link tek satır açıklama ile gelsin.
+- **Family tablosu** (kardeş Codechu paketleri) — ziyaretçi
+  ekosistemi bulabilsin.
+- **Lisans + credits** en altta.
+
+**README'de açık yasaklar:**
+
+- Tam API referans tabloları yok (`docs/API.md`'de).
+- Çok-bölümlü örnek mutfağı yok (`docs/RECIPES.md`'de).
+- Tasarım gerekçesi / mimari derin dalış yok (`docs/ARCHITECTURE.md`
+  veya `DESIGN_PRINCIPLES.md`'de).
+- Extension noktası / plug-in kataloğu yok.
+- Migration rehberi yok (`docs/MIGRATION.md`'de).
+
+**Yumuşak uzunluk hedefi:** badge'ler ve görsel sonrası gövde
+yaklaşık **150 satır**'a sığsın. Daha uzunsa içerik `docs/`'a aittir.
+
+**Görsel asset'ler** `assets/` altında:
+
+```
+assets/
+  preview.svg          # README hero statik önizleme (veya banner.svg)
+  preview.cast         # asciinema kaydı (opsiyonel)
+  preview.gif          # .cast'ten türetilmiş animasyon (opsiyonel)
+  diagram-<isim>.svg   # Mermaid render veya el-çizimi mimari
+  screenshots/         # GUI ürünleri için
+```
+
+v0.1.0 itibarıyla README sadece-metin olamaz. Ya inline bir Mermaid
+bloğu ya da `assets/` referansı şart. Proje-tipi rehberleri
+(`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) bu kuralı
+tip-spesifik iskeletlerle yeniden ifade eder.
 
 ## 8. CI/CD baseline
 

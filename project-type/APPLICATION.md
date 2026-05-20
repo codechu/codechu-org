@@ -78,3 +78,81 @@ See [`STANDARDS.md` §11](../STANDARDS.md#11-internationalization-optional).
 
 Apps own the user-facing rendering; localization lives in the app, not
 in its libraries.
+
+## 8. README is the vitrine — application skeleton
+
+The vitrine principle from [STANDARDS §7.1](../STANDARDS.md#71-readme-is-the-vitrine)
+applies to applications with an app-flavoured skeleton:
+
+```markdown
+[banner / logo]
+
+[![Release](...)] [![CI](...)] [![License](...)] [package-channel badges]
+
+> *one-line tagline*
+
+# app-name
+
+[1–3 sentence value proposition — what user problem this solves]
+
+[ONE hero visual: prominent screenshot or screen recording. GUI apps
+ require a real screenshot from the running app; CLI apps require a
+ terminal cast (asciinema SVG / GIF) of a typical session.]
+
+## Install
+
+| Channel | Command |
+|---|---|
+| Flatpak | `flatpak install flathub <id>` |
+| Snap | `snap install <name>` |
+| AppImage | download from [Releases](...) |
+| Distro package | per-distro instructions linked |
+| From source | `pip install -e .` *(or equivalent)* |
+
+(Only list the channels actually shipping.)
+
+## Features
+
+- feature bullet 1
+- feature bullet 2
+   (5–10 bullets of *what the user gets*, not *what the code does*)
+
+## Screenshots
+
+(Optional second-tier visual section — 2–4 additional screenshots
+showing different views or states. Skip if the hero already says
+enough.)
+
+## Read more
+
+- [User guide](docs/GUIDE.md) — task-oriented walkthrough *(when applicable)*
+- [Settings reference](docs/SETTINGS.md) — every preference
+- [Telemetry policy](docs/TELEMETRY.md) — what the app collects, if any
+- [Architecture](docs/ARCHITECTURE.md) — for contributors
+- [Changelog](CHANGELOG.md)
+
+## Privacy
+
+(One paragraph if telemetry exists; "no telemetry" sentence otherwise.
+Linked to `docs/TELEMETRY.md` for detail.)
+
+## License
+
+[License name] — see [LICENSE](LICENSE).
+
+Part of [Codechu](https://github.com/codechu).
+```
+
+**Application-specific hero requirements:**
+
+| Application kind | Hero requirement |
+|---|---|
+| GUI desktop | Real screenshot of running app on Linux (primary platform), preferred in light + dark if both supported |
+| CLI tool | Terminal cast (asciinema SVG / GIF) of a representative invocation |
+| TUI / curses | Asciinema or screenshot of a typical view |
+| Web | Annotated screenshot of the canonical view; for SPAs include a short cast |
+| Daemon / background service | Architectural diagram (Mermaid) showing inputs and outputs |
+
+The prohibition list from STANDARDS §7.1 still holds: no full options
+reference, no manual content, no extension catalogue — those live in
+`docs/`.

@@ -139,14 +139,15 @@ Details: [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md).
 These docs are expected; **exact contents vary by product**.
 
 ```
-README.md                  # canonical, English
+README.md                  # canonical, English — the **vitrine** (see §7.1)
 README.tr.md               # optional, Turkish parallel
 LICENSE                    # whichever license the product carries
 CHANGELOG.md               # Keep a Changelog format
 CONTRIBUTING.md            # contributor onboarding (or "closed contributions" notice)
 SECURITY.md                # vuln disclosure (even for proprietary products)
 CODE_OF_CONDUCT.md         # Contributor Covenant v2.1 reference (for OSS) or internal version
-docs/                      # deeper documentation
+docs/                      # deeper documentation — manual, reference, recipes
+assets/                    # banner, demo cast, diagrams, screenshots
 .github/                   # GitHub-specific (templates, workflows)
 ```
 
@@ -156,8 +157,58 @@ For products with branding, packaging, or i18n, see also:
 docs/BRAND.md, docs/I18N.md, docs/VERSIONING.md, docs/PUBLISHING.md
 packaging/                 # platform-specific install artifacts
 po/                        # gettext translations (if using gettext)
-assets/                    # logo, icon, screenshots, social-preview
 ```
+
+### 7.1 README is the vitrine
+
+The root `README.md` is a **showcase**, not a manual. It is the first
+thing a visitor sees on PyPI, GitHub search, and registry pages —
+first impression, not last word. Treat it accordingly.
+
+**Principles:**
+
+- **One striking visual** above the fold — a demo cast (asciinema /
+  SVG / GIF), a screenshot, or a clean diagram. If the project has
+  any screen output at all, *show it*. If it has none, a Mermaid or
+  ASCII diagram of the data flow / architecture is a satisfying
+  substitute. A wall of text is not.
+- **One quick example**, 5–15 lines, that a reader can run right
+  after install. Don't catalogue every variant.
+- **Capability bullets**, not API tables. README lists *what you can
+  do*; `docs/API.md` lists *every public symbol*.
+- **Deflect to `docs/`** for depth — API reference, recipes,
+  migration, architecture. Each link gets a one-line description.
+- **Family table** (sibling Codechu packages) so visitors find the
+  ecosystem.
+- **License + credits** at the bottom.
+
+**Explicit prohibitions in README:**
+
+- No full API reference tables (those live in `docs/API.md`).
+- No multi-section examples cookbook (that is `docs/RECIPES.md`).
+- No design rationale / architecture deep dive (that is
+  `docs/ARCHITECTURE.md` or `DESIGN_PRINCIPLES.md`).
+- No extension-point / plug-in catalogue.
+- No migration guides (that is `docs/MIGRATION.md`).
+
+**Soft length target:** the body after badges and the hero visual
+fits in roughly **150 lines**. Anything longer belongs in `docs/`.
+
+**Visual assets** live under `assets/`:
+
+```
+assets/
+  preview.svg          # static hero preview for README (or banner.svg)
+  preview.cast         # asciinema recording (optional)
+  preview.gif          # animated preview derived from .cast (optional)
+  diagram-<name>.svg   # Mermaid renders or hand-drawn architecture
+  screenshots/         # for products with GUI
+```
+
+By v0.1.0 the README must not be text-only. Either inline a Mermaid
+block or reference an `assets/` file. The per-project-type docs
+(`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) restate
+this rule with type-specific skeletons.
 
 ## 8. CI/CD baseline
 
