@@ -71,6 +71,25 @@ birlikte gönderilmesi gerekmeyen variant data ya da adapter'ları varsa
 `codechu-<thing>-<variant>` plugin paketleri olarak ayır. Her variant
 kendi data'sını, lisansını, release döngüsünü taşır.
 
+**Repo granülerliği — library başına repo mu, monorepo mu?** Belirleyici
+soru paket sayısı değil, **release bağıdır (coupling)**:
+
+| Paketler… | Repo şekli |
+|---|---|
+| bağımsız, à la carte gönderilir, her biri kendi SemVer döngüsü (çoğu Codechu lib'i — `cli-py`, `log-py`; core + opsiyonel locale paketleri) | **library başına bir repo** (varsayılan) |
+| version-lock olur ve lockstep release olur — core artı onsuz **kullanılamayan** ve birlikte bump olan adapter'lar (ör. UI framework: agnostik core + DOM/native renderer'lar) | **tek monorepo, çok paket** (workspaces) |
+
+Monorepo, React/Vue/Babel şeklidir: tek repo, çok yayınlanan paket, iç
+bağımlılıklar paket-yöneticisinin workspace mekanizmasıyla çözülür
+(`file:` link yok, lokal geliştirmede publish adımı yok). **Framework**
+adıyla + dil suffix'iyle isimlendirilir — `codechu/ui-ts`, paketler
+`core` / `web` / `native`, yayınlananlar `@codechu/ui` / `@codechu/ui-web`
+/ `@codechu/ui-native`. Version-lock'lu bir aileyi **kardeş repolara
+bölme**: bu, repolar arası publish-bump dansını yeniden yaratır
+(polyrepo-sprawl anti-pattern'i) ve hiçbir izolasyon faydası vermez. Dış
+tüketiciler yine **yayınlanmış** pakete bağımlı olur (sınır registry'dir
+— git-dependency bir monorepo'nun alt-dizinini kuramaz).
+
 ## 3. Dosya sistemi yerleşimi (uygulanabildiğinde)
 
 Diskte kullanıcı verisi tutan ürünler vendor namespace kullanmalı.

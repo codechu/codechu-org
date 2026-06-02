@@ -79,6 +79,15 @@ private module to avoid the declared dep — is forbidden in published
 libraries. (Apps may inline during transition; libraries must depend
 cleanly or not at all.)
 
+**Framework monorepos are the exception.** "Siblings, not a layered
+stack" governs *independent libraries in separate repos*. A cohesive
+framework shipped as one monorepo (STANDARDS §2, "Repo granularity")
+intentionally **is** a layered stack: its adapter packages depend on the
+core and version-lock to it. Inside that monorepo a declared core→adapter
+dependency at the shared workspace version is correct, not an anti-pattern
+— the "avoid" rule still applies *across* repos, between independently
+released libraries.
+
 ## 6. Documentation expectations
 
 Every library ships:

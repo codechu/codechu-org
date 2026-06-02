@@ -26,6 +26,9 @@ git config user.name "<your-name>"
 git config user.email "<your-email>"
 ```
 
+- [ ] **Repo şekli kararlaştırıldı** (STANDARDS §2 "Repo granülerliği"):
+      bağımsız library → library başına bir repo; version-lock'lu framework
+      (core + lockstep bump olan adapter'lar) → tek monorepo, çok paket
 - [ ] Default branch `main`
 - [ ] `.gitattributes` eklendi (LF normalize) — codechu-org'dan kopyala
 - [ ] `.gitignore` toolchain'i kapsıyor (build artifacts, IDE, OS)

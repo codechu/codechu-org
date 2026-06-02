@@ -69,6 +69,25 @@ split into a core package + sibling `codechu-<thing>-<variant>` plugin
 packages that depend on the core. Each variant carries its own data,
 license, and release cadence.
 
+**Repo granularity — one library per repo, or a monorepo?** The
+deciding question is **release coupling**, not package count:
+
+| The packages… | Repo shape |
+|---|---|
+| ship independently, à la carte, each its own SemVer cadence (most Codechu libs — `cli-py`, `log-py`; a core + optional locale packs) | **one repo per library** (default) |
+| version-lock and release in lockstep — a core plus adapters that **cannot be used without it** and bump together (e.g. a UI framework: agnostic core + DOM/native renderers) | **one monorepo, many packages** (workspaces) |
+
+The monorepo is the React/Vue/Babel shape: one repo, many published
+packages, internal deps resolved by the package-manager's workspace
+mechanism (no `file:` links, no publish step for local dev). It is named
+for the **framework** with the language suffix — `codechu/ui-ts`, packages
+`core` / `web` / `native` publishing `@codechu/ui` / `@codechu/ui-web` /
+`@codechu/ui-native`. Do **not** split a version-locked family into
+sibling repos: that recreates the publish-bump dance across repos (the
+polyrepo-sprawl anti-pattern) for no isolation benefit. External consumers
+still depend on a **published** package (the registry is the boundary —
+git-dependencies cannot install a sub-directory of a monorepo).
+
 ## 3. Filesystem layout (when applicable)
 
 Products that store user data on disk should use the vendor namespace.

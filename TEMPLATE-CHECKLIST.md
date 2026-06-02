@@ -32,6 +32,9 @@ git config user.name "<your-name>"
 git config user.email "<your-email>"
 ```
 
+- [ ] **Repo shape decided** (STANDARDS §2 "Repo granularity"): independent
+      library → one repo per library; version-locked framework (core +
+      adapters that bump in lockstep) → one monorepo, many packages
 - [ ] Default branch is `main`
 - [ ] `.gitattributes` added (LF normalize) — copy from this repo
 - [ ] `.gitignore` covers chosen toolchain (build artifacts, IDE, OS)
