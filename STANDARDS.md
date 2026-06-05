@@ -229,6 +229,47 @@ block or reference an `assets/` file. The per-project-type docs
 (`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) restate
 this rule with type-specific skeletons.
 
+### 7.2 Research & reference subtree (`docs/research/`)
+
+When a decision rests on external literature or on knowledge that may
+post-date an agent's training, keep the research in the repo — current,
+durable, offline. Two docs, **research pure, synthesis separate**:
+
+- **`docs/research/INDEX.md`** — the *pure* catalogue of external
+  sources. Per entry: an id line (venue / id / date / licence / cache
+  file) + a neutral "what it is" + a link. **No Codechu verdict here.**
+- **`docs/<TOPIC>_LANDSCAPE.md`** (at `docs/` root) — *our* synthesis:
+  the decision (header `Decision date · Decider · Status`), the verdicts
+  (in / out under the project's stated constraints), the reasoning, and
+  our own measurements. It **references** `INDEX.md`. Keeping the source
+  record un-coloured lets the synthesis be revised without rewriting the
+  research, and audited against neutral facts. `docs/ARCHITECTURE.md`
+  links to the landscape doc for discoverability.
+- **`docs/research/fetch.sh`** — rebuilds a **gitignored**
+  `docs/research/papers/` cache of the full sources (download once,
+  offline thereafter).
+- **`docs/research/figures/`** — committed, downsized, attributed figures,
+  embedded **only** where the licence permits redistribution.
+
+Copyright rules (see also `ai/AGENTS.md` §8):
+
+- **R1 — no full work committed.** A copyrighted work in full (PDF /
+  dataset / full text) is never committed to any tier — only the
+  gitignored cache + rebuild script + a link to the original.
+- **R2 — figure redistribution gate.** An embedded figure carries its
+  licence + source + author beside it. If the licence does not grant
+  third-party redistribution (e.g. the arXiv non-exclusive distribution
+  licence, "all rights reserved"), the figure is **link-only**; a public
+  repo embeds only figures whose licence permits it or that stand on a
+  sound quotation basis (TR FSEK m.35 / EU 2001/29 Art.5(3)(d)).
+- **Tier matters.** Distribution rights trigger on public release;
+  redistribution-unlicensed visuals do not enter a public-tier repo.
+
+This is where §7.1's rationale belongs: the vitrine README keeps design
+rationale OUT, the research subtree is where it lands. These files render
+only on GitHub (never shipped to PyPI), so the §7.1 cross-surface
+constraints do not apply. Reference implementation: `codechu-trace-py`.
+
 ## 8. CI/CD baseline
 
 Language- and platform-agnostic minimum:

@@ -115,3 +115,25 @@ package names. When generating new code:
 - Repo names: `codechu/<thing>-py` / `-rs` / `-go` (language suffix)
 
 See [`../STANDARDS.md`](../STANDARDS.md) for the full rule set.
+
+## 8. Research discipline
+
+When a task depends on external literature, or on knowledge that may
+post-date your training (a recent paper, a spec change, current tool
+behaviour): **do not trust stale memory — fetch the current source.**
+
+- **Research pure, synthesis separate.** Record external sources
+  neutrally (what they are + a link); write *our* verdicts, reasons,
+  decision and measurements in a separate synthesis that references the
+  source record. Keep the two un-mixed.
+- **Gist + link, not verbatim.** Capture only the relevant idea; a link
+  to the original is enough. Do not paste full text.
+- **Prefer primary measurement.** Where you can measure it yourself,
+  measure — and record decider + date in the decision doc.
+- **Respect copyright.** Never commit a copyrighted work in full; keep a
+  gitignored cache + a rebuild script. Embed a figure only with an
+  attribution and a redistribution-permitting licence; otherwise
+  link-only.
+
+The artefact shape (`docs/research/` + the `INDEX` / `<TOPIC>_LANDSCAPE`
+split + the copyright rules) is [`../STANDARDS.md`](../STANDARDS.md) §7.2.

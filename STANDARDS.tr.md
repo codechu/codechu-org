@@ -232,6 +232,48 @@ bloğu ya da `assets/` referansı şart. Proje-tipi rehberleri
 (`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) bu kuralı
 tip-spesifik iskeletlerle yeniden ifade eder.
 
+### 7.2 Araştırma & referans alt-ağacı (`docs/research/`)
+
+Bir karar dış literatüre veya bir ajanın eğitim verisinden yeni olabilecek
+bilgiye dayandığında, araştırmayı repo'da tut — güncel, kalıcı, offline.
+İki doküman, **research saf, sentez ayrı**:
+
+- **`docs/research/INDEX.md`** — dış kaynakların *saf* kataloğu. Kayıt
+  başına: kimlik satırı (mecra / id / tarih / lisans / cache dosyası) +
+  nötr "bu nedir" + link. **Burada Codechu yargısı YOK.**
+- **`docs/<TOPIC>_LANDSCAPE.md`** (`docs/` kökünde) — *bizim* sentezimiz:
+  karar (başlık `Decision date · Decider · Status`), verdict'ler (projenin
+  belirtilen kısıtlarına göre in / out), gerekçe ve kendi ölçümlerimiz.
+  `INDEX.md`'ye **refer eder**. Kaynak kaydını renksiz tutmak, sentezi
+  research'i yeniden yazmadan revize etmeye ve nötr gerçeklere karşı
+  denetlemeye izin verir. `docs/ARCHITECTURE.md` keşfedilebilirlik için
+  landscape dokümanına link verir.
+- **`docs/research/fetch.sh`** — tam kaynakların **gitignore'lu**
+  `docs/research/papers/` cache'ini yeniden kurar (bir kez indir, sonrası
+  offline).
+- **`docs/research/figures/`** — commit'li, küçültülmüş, atıflı figürler;
+  **yalnızca** lisansı yeniden-dağıtıma izin veriyorsa gömülür.
+
+Telif kuralları (ayrıca bkz. `ai/AGENTS.md` §8):
+
+- **R1 — eserin bütünü commit edilmez.** Telifli bir eserin bütünü (PDF /
+  veri seti / tam metin) hiçbir tier'a commit edilmez — yalnızca
+  gitignore'lu cache + yeniden-kurma scripti + orijinale link.
+- **R2 — figür redistribution geçidi.** Gömülü figürün yanında lisans +
+  kaynak + yazar bulunur. Lisans üçüncü-taraf yeniden-dağıtıma izin
+  vermiyorsa (ör. arXiv non-exclusive distribution lisansı, "all rights
+  reserved"), figür **link-only**'dir; public repo yalnızca lisansı izin
+  veren veya sağlam iktibas zeminine oturan (TR FSEK m.35 / EU 2001/29
+  m.5(3)(d)) figürleri gömer.
+- **Tier önemli.** Yayma hakkı umuma arzda tetiklenir;
+  yeniden-dağıtım-izinsiz görseller public-tier repo'ya girmez.
+
+§7.1'in gerekçesinin yeri burasıdır: vitrin README tasarım gerekçesini
+DIŞARIDA tutar, araştırma alt-ağacı onun indiği yerdir. Bu dosyalar
+yalnızca GitHub'da render olur (PyPI'a gönderilmez), bu yüzden §7.1
+cross-surface kısıtları geçerli değildir. Referans implementasyon:
+`codechu-trace-py`.
+
 ## 8. CI/CD baseline
 
 Dil- ve platform-agnostik minimum:
