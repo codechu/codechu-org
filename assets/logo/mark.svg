@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 64" width="68" height="64"
-     role="img" style="color:#1d2939" aria-labelledby="t d">
+     role="img" aria-labelledby="t d">
   <title id="t">Codechu mark</title>
-  <desc id="d">The mark is the filled body; its colour follows the background (ink on light, paper on dark)
-and is set with CSS `color`. Seams are transparent gaps produced by a mask, so the
-ribbon reads as passing over the band exactly as in the master: the band's edges do not
-show through the ribbon.</desc>
+  <desc id="d">Codechu mark, full colour: navy gradient body with a gold disc. The mark is the filled body; the thin transparent seams are a mask, and they are what let the ribbon read as passing over the band.</desc>
+  <defs><linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34507a"/><stop offset="1" stop-color="#0f1928"/>
+    </linearGradient></defs>
   <mask id="seams" maskUnits="userSpaceOnUse" x="0" y="0" width="68" height="64">
     <rect x="0" y="0" width="68" height="64" fill="#fff"/>
     <path
@@ -29,7 +29,7 @@ show through the ribbon.</desc>
        id="path3"
        fill="none" stroke="#000" stroke-width="1.15" stroke-linejoin="round"/>
   </mask>
-  <g mask="url(#seams)" fill="currentColor">
+  <g mask="url(#seams)" fill="url(#body)">
     <path
       
        d="M 7.1959114,59.202726 18.098807,1.7444634 65.417377,21.151618 44.810903,55.822828 22.787053,46.446337 24.313458,18.207836 42.303237,23.986372 39.9046,25.621806 28.129472,24.640546 29.764906,43.175469 40.558773,46.555366 56.367973,24.640545 20.824532,11.448041 17.226576,62.255537 Z"
@@ -40,7 +40,7 @@ show through the ribbon.</desc>
        id="path4"
        r="4.7427597"
        cy="30.80068"
-       cx="45.083477" stroke="none"/>
+       cx="45.083477" stroke="none" fill="#e0a020"/>
     <path
       
        d="m 1.6354344,44.701874 c 0,0 9.1664686,-2.279357 12.1022146,-3.597956 2.628694,-1.180685 10.111117,-7.26427 14.064736,-9.485519 3.110596,-1.747616 9.812606,-3.379898 9.812606,-3.379898 0,0 -1.095565,1.77508 -0.872231,3.597956 0.193971,1.583212 0.98126,2.834753 0.98126,2.834753 0,0 -5.781833,-0.392661 -8.286201,0.763202 -2.834753,1.308348 -12.076389,8.66981 -15.70017,11.448041 -3.270869,2.507667 -9.1584326,5.451448 -9.1584326,5.451448 0,0 0.109029,-2.532667 -0.3270868,-4.1431 -0.5876148,-2.16987 -2.6166952,-3.488927 -2.6166952,-3.488927 z"

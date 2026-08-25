@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 64" width="68" height="64"
      role="img" aria-labelledby="t d">
   <title id="t">Codechu mark</title>
-  <desc id="d">The mark is the filled body; its colour follows the background (ink on light, paper on dark)
-and is set with CSS `color`. Seams are transparent gaps produced by a mask, so the
-ribbon reads as passing over the band exactly as in the master: the band's edges do not
-show through the ribbon.</desc>
+  <desc id="d">Single colour, inherits currentColor. For system tray, favicons and one-colour print.</desc>
   <mask id="seams" maskUnits="userSpaceOnUse" x="0" y="0" width="68" height="64">
     <rect x="0" y="0" width="68" height="64" fill="#fff"/>
     <path

@@ -103,9 +103,9 @@ Org'un kendine ait tek bir işareti var; ürün glifleriyle karıştırılmaz. O
 
 | Dosya | Kullanım |
 |---|---|
-| `assets/logo/mark.svg` | ana dosya — dolu gövde, renk CSS `color` ile (varsayılan `--brand-ink`) |
-| `assets/logo/mark-knockout.svg` | aynısı, koyu zemin için paper'a ayarlı |
-| `assets/logo/mark-mono.svg` | aynısı, varsayılan renksiz — `currentColor` miras alır |
+| `assets/logo/mark.svg` | ana dosya — navy gradyan gövde, gold disk |
+| `assets/logo/mark-knockout.svg` | koyu zemin — paper gövde, gold disk korunur |
+| `assets/logo/mark-mono.svg` | tek renk, `currentColor` — tepsi ikonu, favicon, tek renk baskı |
 | `assets/logo/mark-outline.svg` | yazarın çizimi: beyaz dolgu, siyah kontur |
 | `assets/logo/mark-{16..1024}.png` | standart raster seti, ana dosyadan üretilir |
 
@@ -113,9 +113,14 @@ Org'un kendine ait tek bir işareti var; ürün glifleriyle karıştırılmaz. O
 değmeyen ayrı bir daire. Ve spiralin *üstünden* geçen, onu iki yerden kesen
 bir kurdela — uçlarda geniş, ortada dar, uçları içe kavisli.
 
-**İşaret dolu gövdedir.** Rengi zemine göre döner — açıkta ink, koyuda paper —
-ve yazarın çizimindeki kontur yalnızca şekli beyaz sayfadan ayırmak içindir.
-Konturu işaretin kendisi sanma.
+**İşaret dolu gövdedir.** Yazarın çizimindeki kontur yalnızca şekli beyaz
+sayfadan ayırmak içindir; konturu işaretin kendisi sanma.
+
+**Renk ortak paletten gelir.** Gövde navy gradyanı taşır
+(`--brand-navy-light` → `--brand-navy-dark`), disk ise gold kıvılcımdır — tek
+ve küçük kasıtlı an, ki paletin gold kuralı da budur. Gold ayrıca küçük boyda
+hakkını veriyor: 16 pikselte detayın gerisi kaybolduktan sonra bile disk sıcak
+bir nokta olarak okunuyor.
 
 **Ama örtüşmenin ayrımı şart.** Kurdela bandın üstünden geçerken tek düze bir
 dolgu ikisini tek kütleye kaynatır. Sevk edilen varyantlar o kenarlarda ince

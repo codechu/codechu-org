@@ -102,9 +102,9 @@ it; the working files were lost and it was redrawn as plain vector in 2026.
 
 | File | Use |
 |---|---|
-| `assets/logo/mark.svg` | master — filled body, colour via CSS `color` (defaults to `--brand-ink`) |
-| `assets/logo/mark-knockout.svg` | same, pre-set to paper for dark backgrounds |
-| `assets/logo/mark-mono.svg` | same, no default colour — inherits `currentColor` |
+| `assets/logo/mark.svg` | master — navy gradient body, gold disc |
+| `assets/logo/mark-knockout.svg` | dark backgrounds — paper body, gold disc kept |
+| `assets/logo/mark-mono.svg` | one colour, `currentColor` — tray icons, favicons, single-colour print |
 | `assets/logo/mark-outline.svg` | the author's drawing: white fill, black stroke |
 | `assets/logo/mark-{16..1024}.png` | the standard raster set, rendered from the master |
 
@@ -113,9 +113,14 @@ separate circle that does not touch the band. And a ribbon passing *over* the
 spiral, crossing it twice — wide at both ends, narrow in the middle, its ends
 curving inward.
 
-**The mark is the filled body.** Its colour follows the background — ink on
-light, paper on dark — and the outline in the author's drawing exists only to
-lift the shape off a white page. Do not treat the stroke as the mark.
+**The mark is the filled body.** The outline in the author's drawing exists
+only to lift the shape off a white page; do not treat the stroke as the mark.
+
+**Colour follows the shared palette.** The body carries the navy gradient
+(`--brand-navy-light` to `--brand-navy-dark`) and the disc is the gold spark —
+one small deliberate moment, which is the palette's own rule for gold. The
+gold also earns its place at small sizes: at 16px the disc still reads as a
+warm dot after the rest of the detail has gone.
 
 **But the overlap still needs a break.** Where the ribbon passes over the
 band, a uniform fill would fuse them into one mass. The shipped variants keep
