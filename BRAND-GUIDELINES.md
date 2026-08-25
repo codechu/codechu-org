@@ -102,9 +102,10 @@ it; the working files were lost and it was redrawn as plain vector in 2026.
 
 | File | Use |
 |---|---|
-| `assets/logo/mark.svg` | master — white fill, black stroke, `viewBox 0 0 68 64` |
-| `assets/logo/mark-knockout.svg` | dark backgrounds — paper fill, navy-dark stroke |
-| `assets/logo/mark-mono.svg` | single colour — outline only, `currentColor` |
+| `assets/logo/mark.svg` | master — filled body, colour via CSS `color` (defaults to `--brand-ink`) |
+| `assets/logo/mark-knockout.svg` | same, pre-set to paper for dark backgrounds |
+| `assets/logo/mark-mono.svg` | same, no default colour — inherits `currentColor` |
+| `assets/logo/mark-outline.svg` | the author's drawing: white fill, black stroke |
 | `assets/logo/mark-{16..1024}.png` | the standard raster set, rendered from the master |
 
 **The form.** One angular band spiralling inward, every edge straight. A
@@ -112,10 +113,14 @@ separate circle that does not touch the band. And a ribbon passing *over* the
 spiral, crossing it twice — wide at both ends, narrow in the middle, its ends
 curving inward.
 
-**The stroke is structural, not decoration.** It is what separates the ribbon
-from the band where they overlap; drop it and the two fuse into one mass. Any
-variant must keep a value break along those edges — that is why the mono
-variant is an outline rather than a filled silhouette.
+**The mark is the filled body.** Its colour follows the background — ink on
+light, paper on dark — and the outline in the author's drawing exists only to
+lift the shape off a white page. Do not treat the stroke as the mark.
+
+**But the overlap still needs a break.** Where the ribbon passes over the
+band, a uniform fill would fuse them into one mass. The shipped variants keep
+a thin transparent seam along those edges (a mask, not a stroke), which is what
+lets the ribbon read as passing over. Any new variant must preserve it.
 
 **Do not re-trace the mark from a raster.** The old blog-header artwork carried
 a chrome bevel and a gold backlight; both are era treatment, not the mark, and

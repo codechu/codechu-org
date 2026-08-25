@@ -1,56 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   version="1.1"
-   id="svg1"
-   width="68"
-   height="64"
-   viewBox="0 0 68 64"
-   sodipodi:docname="logo.svg"
-   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="9.171875"
-     inkscape:cx="34.017036"
-     inkscape:cy="32"
-     inkscape:window-width="1470"
-     inkscape:window-height="795"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg1" />
-  <g
-     id="g12"
-     style="display:inline;mix-blend-mode:normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 64" width="68" height="64"
+     role="img" aria-labelledby="t d">
+  <title id="t">Codechu mark</title>
+  <desc id="d">The mark is the filled body; its colour follows the background (ink on light, paper on dark)
+and is set with CSS `color`. Seams are transparent gaps produced by a mask, so the
+ribbon reads as passing over the band exactly as in the master: the band's edges do not
+show through the ribbon.</desc>
+  <mask id="seams" maskUnits="userSpaceOnUse" x="0" y="0" width="68" height="64">
+    <rect x="0" y="0" width="68" height="64" fill="#fff"/>
     <path
-       style="opacity:1;fill:none;fill-opacity:1;stroke:currentColor;stroke-opacity:1"
+      
        d="M 7.1959114,59.202726 18.098807,1.7444634 65.417377,21.151618 44.810903,55.822828 22.787053,46.446337 24.313458,18.207836 42.303237,23.986372 39.9046,25.621806 28.129472,24.640546 29.764906,43.175469 40.558773,46.555366 56.367973,24.640545 20.824532,11.448041 17.226576,62.255537 Z"
        id="path2"
-       sodipodi:nodetypes="ccccccccccccccc" />
+       fill="none" stroke="#000" stroke-width="1.15" stroke-linejoin="round"/>
     <circle
-       style="display:inline;mix-blend-mode:normal;fill:none;fill-opacity:1;stroke:currentColor;stroke-opacity:1;opacity:1"
+      
        id="path4"
        r="4.7427597"
        cy="30.80068"
-       cx="45.083477" />
+       cx="45.083477" fill="none" stroke="#000" stroke-width="1.15"/>
     <path
-       style="fill:none;fill-opacity:1;stroke:currentColor;stroke-opacity:1;opacity:1"
+      
        d="m 1.6354344,44.701874 c 0,0 9.1664686,-2.279357 12.1022146,-3.597956 2.628694,-1.180685 10.111117,-7.26427 14.064736,-9.485519 3.110596,-1.747616 9.812606,-3.379898 9.812606,-3.379898 0,0 -1.095565,1.77508 -0.872231,3.597956 0.193971,1.583212 0.98126,2.834753 0.98126,2.834753 0,0 -5.781833,-0.392661 -8.286201,0.763202 -2.834753,1.308348 -12.076389,8.66981 -15.70017,11.448041 -3.270869,2.507667 -9.1584326,5.451448 -9.1584326,5.451448 0,0 0.109029,-2.532667 -0.3270868,-4.1431 -0.5876148,-2.16987 -2.6166952,-3.488927 -2.6166952,-3.488927 z"
        id="path3"
-       sodipodi:nodetypes="csscscsscsc" />
+       fill="#fff" stroke="none"/>
+    <path
+      
+       d="m 1.6354344,44.701874 c 0,0 9.1664686,-2.279357 12.1022146,-3.597956 2.628694,-1.180685 10.111117,-7.26427 14.064736,-9.485519 3.110596,-1.747616 9.812606,-3.379898 9.812606,-3.379898 0,0 -1.095565,1.77508 -0.872231,3.597956 0.193971,1.583212 0.98126,2.834753 0.98126,2.834753 0,0 -5.781833,-0.392661 -8.286201,0.763202 -2.834753,1.308348 -12.076389,8.66981 -15.70017,11.448041 -3.270869,2.507667 -9.1584326,5.451448 -9.1584326,5.451448 0,0 0.109029,-2.532667 -0.3270868,-4.1431 -0.5876148,-2.16987 -2.6166952,-3.488927 -2.6166952,-3.488927 z"
+       id="path3"
+       fill="none" stroke="#000" stroke-width="1.15" stroke-linejoin="round"/>
+  </mask>
+  <g mask="url(#seams)" fill="currentColor">
+    <path
+      
+       d="M 7.1959114,59.202726 18.098807,1.7444634 65.417377,21.151618 44.810903,55.822828 22.787053,46.446337 24.313458,18.207836 42.303237,23.986372 39.9046,25.621806 28.129472,24.640546 29.764906,43.175469 40.558773,46.555366 56.367973,24.640545 20.824532,11.448041 17.226576,62.255537 Z"
+       id="path2"
+       stroke="none"/>
+    <circle
+      
+       id="path4"
+       r="4.7427597"
+       cy="30.80068"
+       cx="45.083477" stroke="none"/>
+    <path
+      
+       d="m 1.6354344,44.701874 c 0,0 9.1664686,-2.279357 12.1022146,-3.597956 2.628694,-1.180685 10.111117,-7.26427 14.064736,-9.485519 3.110596,-1.747616 9.812606,-3.379898 9.812606,-3.379898 0,0 -1.095565,1.77508 -0.872231,3.597956 0.193971,1.583212 0.98126,2.834753 0.98126,2.834753 0,0 -5.781833,-0.392661 -8.286201,0.763202 -2.834753,1.308348 -12.076389,8.66981 -15.70017,11.448041 -3.270869,2.507667 -9.1584326,5.451448 -9.1584326,5.451448 0,0 0.109029,-2.532667 -0.3270868,-4.1431 -0.5876148,-2.16987 -2.6166952,-3.488927 -2.6166952,-3.488927 z"
+       id="path3"
+       stroke="none"/>
   </g>
 </svg>
