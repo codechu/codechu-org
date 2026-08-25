@@ -95,6 +95,32 @@ metaphor. The wordmark carries the meaning (e.g. "Disk Cleaner",
 | Small-size simplified | If gradients/details don't survive at 16–32px, ship a separate simplified file |
 | Native sizes | Each target platform's required size set rasterized from master |
 
+### The Codechu organisation mark
+
+The org has one mark of its own, distinct from any product glyph. Onur drew
+it; the working files were lost and it was redrawn as plain vector in 2026.
+
+| File | Use |
+|---|---|
+| `assets/logo/mark.svg` | master — white fill, black stroke, `viewBox 0 0 68 64` |
+| `assets/logo/mark-knockout.svg` | dark backgrounds — paper fill, navy-dark stroke |
+| `assets/logo/mark-mono.svg` | single colour — outline only, `currentColor` |
+| `assets/logo/mark-{16..1024}.png` | the standard raster set, rendered from the master |
+
+**The form.** One angular band spiralling inward, every edge straight. A
+separate circle that does not touch the band. And a ribbon passing *over* the
+spiral, crossing it twice — wide at both ends, narrow in the middle, its ends
+curving inward.
+
+**The stroke is structural, not decoration.** It is what separates the ribbon
+from the band where they overlap; drop it and the two fuse into one mass. Any
+variant must keep a value break along those edges — that is why the mono
+variant is an outline rather than a filled silhouette.
+
+**Do not re-trace the mark from a raster.** The old blog-header artwork carried
+a chrome bevel and a gold backlight; both are era treatment, not the mark, and
+a silhouette trace of them loses the ribbon entirely.
+
 ## 4. Logo usage rules (all products)
 
 ### Safe zone

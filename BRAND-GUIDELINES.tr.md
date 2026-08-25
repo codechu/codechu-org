@@ -95,6 +95,32 @@ Notion / Linear / Vercel paterni.
 | Small-size simplified | Gradient/detay 16-32px'te kaybolursa ayrı sade dosya |
 | Platform-native sizes | Her hedefin gerekli set'i master'dan rasterize |
 
+### Codechu organizasyon işareti
+
+Org'un kendine ait tek bir işareti var; ürün glifleriyle karıştırılmaz. Onur
+çizdi; kaynak dosyalar kaybolduğu için 2026'da düz vektör olarak yeniden
+çizildi.
+
+| Dosya | Kullanım |
+|---|---|
+| `assets/logo/mark.svg` | ana dosya — beyaz dolgu, siyah kontur, `viewBox 0 0 68 64` |
+| `assets/logo/mark-knockout.svg` | koyu zemin — paper dolgu, navy-dark kontur |
+| `assets/logo/mark-mono.svg` | tek renk — yalnız kontur, `currentColor` |
+| `assets/logo/mark-{16..1024}.png` | standart raster seti, ana dosyadan üretilir |
+
+**Form.** İçe doğru dönen köşeli tek bir bant, bütün kenarları düz. Banda
+değmeyen ayrı bir daire. Ve spiralin *üstünden* geçen, onu iki yerden kesen
+bir kurdela — uçlarda geniş, ortada dar, uçları içe kavisli.
+
+**Kontur süs değil, yapıdır.** Kurdelayı bandın üstünde ayıran şey odur;
+kaldırılırsa ikisi tek kütleye kaynar. Her varyant o kenarlarda bir değer
+kırılması korumalıdır — mono varyantın dolu siluet değil kontur olmasının
+sebebi budur.
+
+**İşaret rasterden yeniden izlenmez.** Eski blog başlığındaki görselde krom
+kabartma ve altın arka ışık vardı; ikisi de dönemin işlemesi, işaretin parçası
+değil, ve onların siluet izi kurdelayı tamamen kaybeder.
+
 ## 4. Logo kullanım kuralları (tüm ürünler)
 
 ### Safe zone
