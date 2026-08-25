@@ -103,7 +103,7 @@ Org'un kendine ait tek bir işareti var; ürün glifleriyle karıştırılmaz. O
 
 | Dosya | Kullanım |
 |---|---|
-| `assets/logo/mark.svg` | ana dosya — navy gradyan gövde, gold disk |
+| `assets/logo/mark.svg` | ana dosya — navy gradyan gövde, gold disk; kare viewBox, 512×512 çıktı |
 | `assets/logo/mark-knockout.svg` | koyu zemin — paper gövde, gold disk korunur |
 | `assets/logo/mark-mono.svg` | tek renk, `currentColor` — tepsi ikonu, favicon, tek renk baskı |
 | `assets/logo/mark-outline.svg` | yazarın çizimi: beyaz dolgu, siyah kontur |

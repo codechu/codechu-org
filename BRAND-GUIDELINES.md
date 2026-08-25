@@ -102,7 +102,7 @@ it; the working files were lost and it was redrawn as plain vector in 2026.
 
 | File | Use |
 |---|---|
-| `assets/logo/mark.svg` | master — navy gradient body, gold disc |
+| `assets/logo/mark.svg` | master — navy gradient body, gold disc; square viewBox, 512×512 output |
 | `assets/logo/mark-knockout.svg` | dark backgrounds — paper body, gold disc kept |
 | `assets/logo/mark-mono.svg` | one colour, `currentColor` — tray icons, favicons, single-colour print |
 | `assets/logo/mark-outline.svg` | the author's drawing: white fill, black stroke |
