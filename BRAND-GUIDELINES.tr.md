@@ -106,6 +106,7 @@ Org'un kendine ait tek bir işareti var; ürün glifleriyle karıştırılmaz. O
 | `assets/logo/mark.svg` | ana dosya — navy gradyan gövde, gold disk; kare viewBox, 512×512 çıktı |
 | `assets/logo/mark-knockout.svg` | koyu zemin — paper gövde, gold disk korunur |
 | `assets/logo/mark-mono.svg` | tek renk, `currentColor` — tepsi ikonu, favicon, tek renk baskı |
+| `assets/logo/mark-avatar-512.png` | avatar: navy kare üstünde paper işaret, kendi zeminini taşır |
 | `assets/logo/mark-outline.svg` | yazarın çizimi: beyaz dolgu, siyah kontur |
 | `assets/logo/mark-{16..1024}.png` | standart raster seti, ana dosyadan üretilir |
 
@@ -130,6 +131,11 @@ okutan şey odur. Yeni varyantlar bunu korumalıdır.
 **İşaret rasterden yeniden izlenmez.** Eski blog başlığındaki görselde krom
 kabartma ve altın arka ışık vardı; ikisi de dönemin işlemesi, işaretin parçası
 değil, ve onların siluet izi kurdelayı tamamen kaybeder.
+
+**Avatar kendi zeminini taşımalı.** Profil görselleri, hangi tema geçerliyse
+onun üstüne bindiriliyor; navy ana dosya koyu temada kayboluyor. Bu yüzden
+`mark-avatar-512.png` navy kareyi ve paper işareti içine gömer, iki temada da
+aynı okunur. Zemin bizim değilse bunu kullan.
 
 ## 4. Logo kullanım kuralları (tüm ürünler)
 

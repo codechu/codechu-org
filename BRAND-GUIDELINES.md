@@ -105,6 +105,7 @@ it; the working files were lost and it was redrawn as plain vector in 2026.
 | `assets/logo/mark.svg` | master — navy gradient body, gold disc; square viewBox, 512×512 output |
 | `assets/logo/mark-knockout.svg` | dark backgrounds — paper body, gold disc kept |
 | `assets/logo/mark-mono.svg` | one colour, `currentColor` — tray icons, favicons, single-colour print |
+| `assets/logo/mark-avatar-512.png` | avatar: paper mark on a navy square, carries its own background |
 | `assets/logo/mark-outline.svg` | the author's drawing: white fill, black stroke |
 | `assets/logo/mark-{16..1024}.png` | the standard raster set, rendered from the master |
 
@@ -130,6 +131,11 @@ lets the ribbon read as passing over. Any new variant must preserve it.
 **Do not re-trace the mark from a raster.** The old blog-header artwork carried
 a chrome bevel and a gold backlight; both are era treatment, not the mark, and
 a silhouette trace of them loses the ribbon entirely.
+
+**Avatars need their own background.** Profile pictures are composited onto
+whatever the host's theme happens to be, and the navy master disappears on a
+dark one. `mark-avatar-512.png` bakes in the navy square with the paper mark,
+so it reads the same in either theme. Use it wherever the surface is not ours.
 
 ## 4. Logo usage rules (all products)
 
