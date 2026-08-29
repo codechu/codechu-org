@@ -1,45 +1,47 @@
-# Research-Line Conventions (language-agnostic)
+# Published-Verdict Overlay (any project type)
 
-Rules that apply to any Codechu **research line**: a method, the
-pipeline that runs it, and an honest verdict about whether it works.
-Language-specific extensions live under
-[`lang/<name>/`](../lang/).
+An **overlay**, not a project type: rules a repository adopts *on top
+of* being a [library](../project-type/LIBRARY.md),
+[tool](../project-type/TOOL.md) or
+[application](../project-type/APPLICATION.md). Project types narrow;
+overlays add.
 
-Read first: [`STANDARDS.md`](../STANDARDS.md).
+Read first: [`STANDARDS.md`](../STANDARDS.md), then your project type.
 
-## 1. What makes a repository this type
+## 1. When this overlay applies
 
-A research line is a repository whose product is a **finding**. The
-code exists to make the finding reproducible, and the honest status of
-the finding is a first-class deliverable rather than a caveat at the
-bottom.
+Adopt it when the repository's product is a **claim** — a finding, a
+score, a verdict — rather than only the software that produces it. The
+code exists to make the claim reproducible, and the honest status of
+the claim is a deliverable rather than a caveat at the bottom.
 
-Three questions place a repo here — all three must be yes:
+One question decides it: **could the verdict this repo publishes come
+out negative, and would you publish it anyway?** If yes, the overlay
+applies. If the repo only ships software and makes no claim about the
+world, it does not.
 
-| Question | Research line |
-|---|---|
-| Is there something to install and call from other software? | No |
-| Does a human open it as a product? | No |
-| Does it publish a verdict that could come out negative? | **Yes** |
+The overlay was first written for a benchmark and a production line —
+both of them tools by type. It does not replace the type's rules; it
+adds obligations the type has no opinion about, and suspends two
+vitrine bullets that assume a package.
 
-Anything that answers yes to the first is a [library](LIBRARY.md);
-yes to the second, an [application](APPLICATION.md).
-
-## 2. Two §7.1 rules do not apply here
+## 2. Two §7.1 rules do not apply under this overlay
 
 [STANDARDS §7.1](../STANDARDS.md#71-readme-is-the-vitrine) is written
 for things that ship as packages. Two of its bullets have no referent
-in a research line, and forcing them produces a dishonest README:
+when the product is a claim, and forcing them produces a dishonest
+README:
 
 - **"One quick example, 5–15 lines, that a reader can run right after
-  install."** There is nothing to install, and a line whose product is
-  a verdict cannot honestly promise that five lines produce a result.
+  install."** A repository whose product is a verdict cannot honestly
+  promise that five lines produce a result — the result is the point,
+  and it takes a run.
   Replace it with **§4's `## Run it`**: one command that runs today,
   offline, followed by a real captured trace.
 - **"Family table (sibling Codechu packages)."** What ties siblings
-  here is a shared method and identity, not a registry namespace. A
-  package table would list nothing. Say the relationship in a sentence
-  and link the sibling repository.
+  here is a shared method and identity, not a registry namespace — and
+  the sibling is often not published at all. Say the relationship in a
+  sentence and link the repository.
 
 Every other §7.1 rule and every §7.1 prohibition still holds.
 
@@ -58,7 +60,7 @@ justification is only legible once the reader knows what is being
 justified. **Every doctrinal passage follows the concrete thing it
 defends.**
 
-## 4. README is the vitrine — research-line skeleton
+## 4. README is the vitrine — verdict skeleton
 
 ```markdown
 [hero image — ONE, <p align="center">]
@@ -90,7 +92,7 @@ defends.**
 ```
 
 **Maximum nine `##` sections.** Above nine, GitHub's outline menu
-becomes a wall. *Incident: a research-line README carried thirteen,
+becomes a wall. *Incident: one such README carried thirteen,
 six of them beginning with the word "What" — unnavigable in a sidebar
 that truncates.*
 
@@ -128,9 +130,10 @@ bare `<pre>`; a fenced block renders as
 `<div class="highlight highlight-source-shell">`.* Indented blocks get
 no syntax highlighting — reserve them for non-typable ASCII.
 
-**Commands must fit the column.** *Incident: `# 80 tests, no network`
-rendered as `# 80 tests, no networ` — the first command a reader sees,
-cut off.* Keep command lines under ~60 characters.
+**A code fence clips; it does not wrap.** Budget the column your
+readers are on, and see [STANDARDS §7.1](../STANDARDS.md#71-readme-is-the-vitrine)
+before quoting a number — the one this document used to quote was
+retracted for having been measured against nothing.
 
 **Two blockquote lines in one paragraph collapse into one.**
 *Incident: the best sentence in a README had been rendering as a single
@@ -183,7 +186,7 @@ limitation.
 
 ## 8. Every number carries its record
 
-A research line is believed on its numbers, so a number without an
+A repository under this overlay is believed on its numbers, so a number without an
 openable record is worse than no number.
 
 - A number printed in the README, the changelog, or any durable
@@ -213,7 +216,7 @@ when a cross-reference dies.
 - [ ] Badge row on one source line, every badge linked
 - [ ] Lede names the runtime ("Python", "stdlib-only") — grep for it
 - [ ] Status stamp above the fold, full `## Status` in the lower third
-- [ ] `## Run it` present, fenced, language-tagged, offline, ≤60-char lines
+- [ ] `## Run it` present, fenced, language-tagged, and offline
 - [ ] A real captured trace, literal, with a test binding it
 - [ ] ≤9 `##` sections, no two starting with the same word
 - [ ] Documentation as a table with a "when you need it" column

@@ -195,17 +195,19 @@ gördüğü ilk şey — son söz değil, ilk izlenim. Buna göre davran.
   ASCII diyagram doyurucu bir alternatiftir. Düz metin duvarı kabul
   edilemez.
 - **Tek hızlı örnek**, 5–15 satır, kurulumdan hemen sonra
-  çalıştırılabilir olsun. Her varyantı sıralama. *(Araştırma hatları
-  için geçersiz —
-  [`project-type/RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md) §2;
-  onun yerine `## Run it` + gerçek yakalanmış iz gelir.)*
+  çalıştırılabilir olsun. Her varyantı sıralama. *(
+  [`overlay/PUBLISHED-VERDICT.md`](overlay/PUBLISHED-VERDICT.md) §2
+  altındaki depolar için ASKIDA — onun yerine `## Run it` + gerçek
+  yakalanmış iz gelir.)*
 - **Yetenek bullet'ları**, API tabloları değil. README *yapabildiklerini*
   listeler; `docs/API.md` *her public sembolü* listeler.
 - **`docs/`'a yönlendir** — API referansı, recipe'ler, migration,
   mimari için. Her link tek satır açıklama ile gelsin.
 - **Family tablosu** (kardeş Codechu paketleri) — ziyaretçi
-  ekosistemi bulabilsin. *(Araştırma hatları için geçersiz — registry'ye
-  yayımlanmıyorlar; kardeşlik tek cümleyle söylenir ve repo linklenir.)*
+  ekosistemi bulabilsin. *(
+  [`overlay/PUBLISHED-VERDICT.md`](overlay/PUBLISHED-VERDICT.md) §2
+  altında ASKIDA — kardeş çoğu zaman hiç yayımlanmamıştır; ilişki tek
+  cümleyle söylenir ve repo linklenir.)*
 - **Lisans + credits** en altta.
 
 **README'de açık yasaklar:**
@@ -234,8 +236,8 @@ assets/
 v0.1.0 itibarıyla README sadece-metin olamaz. Ya inline bir Mermaid
 bloğu ya da `assets/` referansı şart. Proje-tipi rehberleri
 ([`project-type/LIBRARY.md`](project-type/LIBRARY.md),
-[`APPLICATION.md`](project-type/APPLICATION.md),
-[`RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md)) bu kuralı
+[`TOOL.md`](project-type/TOOL.md),
+[`APPLICATION.md`](project-type/APPLICATION.md)) bu kuralı
 tip-spesifik iskeletlerle yeniden ifade eder.
 
 **Render kuralları (ölçüldü, varsayılmadı).** Aşağıdakilerin hepsi bir
@@ -254,9 +256,16 @@ hiçbiri markdown kaynağı okunurken görünmüyor.
 - **Her badge link olmalı.** Hiçbir yere gitmeyen badge, sinyal
   kostümü giymiş süstür. *Vaka: bir README'de dört badge'in üçü ölü
   görseldi.*
-- **Komut satırları sütuna sığmalı** — ~60 karakterin altında. GitHub
-  code fence içinde sarmaz, keser. *Vaka: okurun gördüğü ilk komut
-  `# 80 tests, no networ` olarak render oldu.*
+- **Code fence keser, sarmaz.** Sütun kenarını geçen satır sessizce
+  kesilir ve okur orada ne yazdığını hiç öğrenemez. *Artan uzunlukta bir
+  cetvel render edilerek ölçüldü — pandoc + github-markdown-css, sabit
+  pencere genişliğinde headless Chrome: masaüstü sütunu ~100 karakter
+  alıyor, 390 px telefon ~42. Bu kuralın önceki hâli "~60 karakterin
+  altında" diyordu; dayanağı, kesildiği bildirilen tek bir 58 karakterlik
+  satırdı. O gözlem okurlarımızın kullandığı hiçbir genişlikte
+  tekrarlanmıyor ve ~60 hiçbir şeye karşı ölçülmemişti: telefonda keser,
+  masaüstünde gereksizdir. Okurlarınızın fiilen bulunduğu sütunu
+  bütçeleyin, ve bir sayı yazmadan önce ölçün.*
 - **Yazılabilir her şey dil etiketli fence içinde.** Dört boşlukla
   girintilenmiş blok çıplak `<pre>` olarak render olur, highlight almaz;
   girintiyi yalnız yazılamayan ASCII için sakla.

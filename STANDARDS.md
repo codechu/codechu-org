@@ -192,18 +192,18 @@ first impression, not last word. Treat it accordingly.
   ASCII diagram of the data flow / architecture is a satisfying
   substitute. A wall of text is not.
 - **One quick example**, 5–15 lines, that a reader can run right
-  after install. Don't catalogue every variant. *(Not applicable to
-  research lines — see
-  [`project-type/RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md) §2;
-  they carry `## Run it` plus a captured trace instead.)*
+  after install. Don't catalogue every variant. *(Suspended for repos
+  under [`overlay/PUBLISHED-VERDICT.md`](overlay/PUBLISHED-VERDICT.md)
+  §2 — they carry `## Run it` plus a captured trace instead.)*
 - **Capability bullets**, not API tables. README lists *what you can
   do*; `docs/API.md` lists *every public symbol*.
 - **Deflect to `docs/`** for depth — API reference, recipes,
   migration, architecture. Each link gets a one-line description.
 - **Family table** (sibling Codechu packages) so visitors find the
-  ecosystem. *(Not applicable to research lines — they are not
-  published to a registry; name the sibling relationship in a sentence
-  and link the repository.)*
+  ecosystem. *(Suspended under
+  [`overlay/PUBLISHED-VERDICT.md`](overlay/PUBLISHED-VERDICT.md) §2 —
+  the sibling is often not published at all; name the relationship in a
+  sentence and link the repository.)*
 - **License + credits** at the bottom.
 
 **Explicit prohibitions in README:**
@@ -232,9 +232,9 @@ assets/
 By v0.1.0 the README must not be text-only. Either inline a Mermaid
 block or reference an `assets/` file. The per-project-type docs
 ([`project-type/LIBRARY.md`](project-type/LIBRARY.md),
-[`APPLICATION.md`](project-type/APPLICATION.md),
-[`RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md)) restate this rule
-with type-specific skeletons.
+[`TOOL.md`](project-type/TOOL.md),
+[`APPLICATION.md`](project-type/APPLICATION.md)) restate this rule with
+type-specific skeletons.
 
 **Rendering rules (measured, not assumed).** Each of these was found by
 rendering a README through `gh api /markdown` and looking at the page;
@@ -253,9 +253,17 @@ none of them are visible while reading the markdown source.
 - **Every badge is a link.** A badge pointing nowhere is decoration
   wearing the costume of a signal. *Incident: three of four badges in
   one README were dead images.*
-- **Command lines must fit the column** — under ~60 characters. GitHub
-  does not wrap inside a code fence; it clips. *Incident: the first
-  command a reader saw rendered as `# 80 tests, no networ`.*
+- **A code fence clips; it does not wrap.** A line past the column edge
+  is cut silently, and the reader never learns what was there.
+  *Measured by rendering a ruler of increasing line lengths — pandoc
+  plus github-markdown-css, screenshotted in headless Chrome at a fixed
+  window width: the desktop column fits ~100 characters, a 390 px phone
+  ~42. An earlier revision of this rule said "under ~60 characters", on
+  the strength of a single 58-character line reported as clipped. That
+  observation does not reproduce at any width our readers use, and ~60
+  was measured against nothing: it clips on a phone and is pointless on
+  a desktop. Budget the column your readers are actually on, and
+  measure it before quoting a number.*
 - **Fence every typable thing with a language tag.** An indented
   four-space block renders as a bare `<pre>` with no highlighting;
   reserve indentation for non-typable ASCII.
@@ -458,10 +466,12 @@ layers extend it:
 
 | Layer | Path | Scope |
 |---|---|---|
-| Project type | [`project-type/`](project-type/) | Library, application, or research line; any language |
+| Project type | [`project-type/`](project-type/) | Library, tool, or application; any language |
 | Language | [`lang/<name>/`](lang/) | Per-language extensions (Python today) |
+| Overlay | [`overlay/`](overlay/) | Disciplines any type may adopt; they add rather than narrow |
 
-Read in order: STANDARDS → project-type → lang.
+Read in order: STANDARDS → project-type → lang, then any overlay the
+repository adopts.
 
 ## 14. Active repositories
 
