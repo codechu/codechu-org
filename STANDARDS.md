@@ -137,10 +137,44 @@ Details: [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md).
 | Rule | Value |
 |---|---|
 | Version scheme | [SemVer 2.0](https://semver.org/) |
-| Commit format | [Conventional Commits](https://www.conventionalcommits.org/) |
+| Commit format | one of the two in §5.0, declared in `CONTRIBUTING.md` |
 | Release tags | `v<MAJOR>.<MINOR>.<PATCH>` |
 | Pre-release | `-alpha.N`, `-beta.N`, `-rc.N` |
-| Changelog | [Keep a Changelog](https://keepachangelog.com/) format |
+| Changelog | [Keep a Changelog](https://keepachangelog.com/) format, or §5.0's prose form |
+
+### 5.0 Who the history is written for
+
+A commit convention serves either a tool that derives things from it or
+a reader who has to understand it, and the two cannot be optimised at
+once. Pick one deliberately, per repository, and say which in
+`CONTRIBUTING.md`. Mixing them inside one repository gives neither.
+
+The second reader is no longer only a person. Agents read repository
+history to decide what to do next, and they are on the understanding
+side of this split, not the deriving side: `fix: correct banner width`
+tells them nothing they could not have seen in the diff, while a body
+naming what went wrong and how it was noticed is the part they cannot
+reconstruct.
+
+| Convention | Choose it when | What you get | What you give up |
+|---|---|---|---|
+| [Conventional Commits](https://www.conventionalcommits.org/) + Keep a Changelog | The history is an input: release tooling derives the version, the changelog and the notes from it | Automated releases (release-please, semantic-release), machine-readable change kinds | The subject line is a type and a summary; there is no room for why |
+| **Incident prose** | The history is a record someone — a person or an agent — will read later to understand a decision, and releases are cut by hand with their own guards | A subject that states the change as a sentence and a body that names the failure it answers | No automation can derive a version or notes from it; you write the changelog entry yourself |
+
+**Incident prose, when chosen, is a convention and not an absence of one:**
+
+- The subject states what changed as a sentence — not a type prefix, not
+  a summary of the diff.
+- The body names the incident: what went wrong, how it was noticed, and
+  what would have caught it. A change with no incident behind it says so.
+- A breaking change says so on the first line of its changelog entry,
+  since no machine will be reading for a `!`.
+- The changelog entry is written by hand and is the release note.
+
+Neither is a licence to skip the other's guarantees. A repository on
+incident prose still tags `v<MAJOR>.<MINOR>.<PATCH>`, still writes a
+changelog entry per release, and still marks breaking changes — it just
+does not expect a tool to infer them.
 
 ### 5.1 Cutting a release
 
