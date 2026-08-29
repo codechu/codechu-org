@@ -237,8 +237,18 @@ block or reference an `assets/` file. The per-project-type docs
 type-specific skeletons.
 
 **Rendering rules (measured, not assumed).** Each of these was found by
-rendering a README through `gh api /markdown` and looking at the page;
-none of them are visible while reading the markdown source.
+rendering a README and looking at the page; none of them are visible
+while reading the markdown source.
+
+**Render it the way a README is rendered.** `gh api /markdown` takes a
+`mode`, and the two modes disagree about the thing most of these rules
+are about. `mode: "gfm"` is *comment* semantics: every single newline
+becomes a `<br>`, and no heading anchors are emitted. `mode: "markdown"`
+is what a README gets: newlines inside a paragraph join, and headings
+carry the anchors that in-page links depend on. *Measured on one file:
+116 `<br>` outside code under gfm, zero under markdown.* Verifying a
+README under gfm shows you a page no reader will see — and it hides
+exactly the line-collapse the next rule is about.
 
 - **The README is not the fold on a GitHub repository page.** *Measured
   on a 1090 px-wide capture: the README began ~1080 px down; the first

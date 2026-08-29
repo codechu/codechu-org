@@ -67,7 +67,8 @@ defends.**
 
 # Repo-Name
 
-[badge row — ALL badges on ONE source line, EVERY badge linked]
+[badge row — EVERY badge linked; source lines may be separate,
+ they join in a paragraph]
 
 *[tagline — one italic sentence]*
 
@@ -213,7 +214,7 @@ when a cross-reference dies.
 ## 10. Checklist
 
 - [ ] Hero alone on the first screen; no second image competing
-- [ ] Badge row on one source line, every badge linked
+- [ ] Every badge in the row is a link
 - [ ] Lede names the runtime ("Python", "stdlib-only") — grep for it
 - [ ] Status stamp above the fold, full `## Status` in the lower third
 - [ ] `## Run it` present, fenced, language-tagged, and offline
