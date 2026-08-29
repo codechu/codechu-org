@@ -241,8 +241,18 @@ bloğu ya da `assets/` referansı şart. Proje-tipi rehberleri
 tip-spesifik iskeletlerle yeniden ifade eder.
 
 **Render kuralları (ölçüldü, varsayılmadı).** Aşağıdakilerin hepsi bir
-README'yi `gh api /markdown` ile render edip sayfaya BAKARAK bulundu;
-hiçbiri markdown kaynağı okunurken görünmüyor.
+README render edilip sayfaya BAKARAK bulundu; hiçbiri markdown kaynağı
+okunurken görünmüyor.
+
+**README nasıl render ediliyorsa öyle render et.** `gh api /markdown`
+bir `mode` alıyor ve iki mod, bu kuralların asıl konusunda birbirine
+zıt. `mode: "gfm"` YORUM semantiğidir: her tek satır sonu `<br>` olur ve
+başlık çapası hiç üretilmez. `mode: "markdown"` README'nin aldığıdır:
+paragraf içindeki satırlar birleşir, başlıklar sayfa-içi linklerin
+dayandığı çapaları taşır. *Tek dosyada ölçüldü: gfm'de kod dışında 116
+`<br>`, markdown'da sıfır.* README'yi gfm ile doğrulamak, hiçbir okurun
+görmeyeceği bir sayfaya bakmaktır — üstelik bir sonraki kuralın konusu
+olan satır-çökmesini tam da gizler.
 
 - **GitHub repo sayfasında fold README değildir.** *1090 px genişlikte
   ölçüldü: README ~1080 px aşağıda başlıyor; ilk ekran dosya listesi ve

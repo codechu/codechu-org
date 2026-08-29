@@ -103,7 +103,7 @@ a tool-flavoured skeleton:
 
 # tool-name
 
-[badge row — one source line, every badge linked]
+[badge row — every badge linked]
 
 *[tagline — one italic sentence]*
 
