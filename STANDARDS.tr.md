@@ -277,7 +277,12 @@ gördüğü ilk şey — son söz değil, ilk izlenim. Buna göre davran.
   [`overlay/PUBLISHED-VERDICT.md`](overlay/PUBLISHED-VERDICT.md) §2
   altında ASKIDA — kardeş çoğu zaman hiç yayımlanmamıştır; ilişki tek
   cümleyle söylenir ve repo linklenir.)*
-- **Lisans + credits** en altta.
+- **Lisans + credits** en altta, ve altbilgi **aileyi ADLANDIRIR**:
+  `Part of [Codechu](https://github.com/codechu).` Bir arama sonucundan
+  gelen okura bu deponun kardeşleri olduğunu söyleyen tek satır, ve
+  maliyeti bir satır. *Vaka: dört tip-iskeletinin ikisinde vardı, sonradan
+  yazılan ikisinde hiç yoktu; yani bir deponun onu taşıyıp taşımaması
+  yazarının hangi iskeleti açtığına kalmıştı.*
 
 **README'de açık yasaklar:**
 
