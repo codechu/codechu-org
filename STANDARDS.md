@@ -253,9 +253,17 @@ none of them are visible while reading the markdown source.
 - **Every badge is a link.** A badge pointing nowhere is decoration
   wearing the costume of a signal. *Incident: three of four badges in
   one README were dead images.*
-- **Command lines must fit the column** — under ~60 characters. GitHub
-  does not wrap inside a code fence; it clips. *Incident: the first
-  command a reader saw rendered as `# 80 tests, no networ`.*
+- **A code fence clips; it does not wrap.** A line past the column edge
+  is cut silently, and the reader never learns what was there.
+  *Measured by rendering a ruler of increasing line lengths — pandoc
+  plus github-markdown-css, screenshotted in headless Chrome at a fixed
+  window width: the desktop column fits ~100 characters, a 390 px phone
+  ~42. An earlier revision of this rule said "under ~60 characters", on
+  the strength of a single 58-character line reported as clipped. That
+  observation does not reproduce at any width our readers use, and ~60
+  was measured against nothing: it clips on a phone and is pointless on
+  a desktop. Budget the column your readers are actually on, and
+  measure it before quoting a number.*
 - **Fence every typable thing with a language tag.** An indented
   four-space block renders as a bare `<pre>` with no highlighting;
   reserve indentation for non-typable ASCII.
