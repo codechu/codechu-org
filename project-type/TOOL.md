@@ -125,6 +125,15 @@ contains and hold the shape with a test across several version strings.
 prints it, the others do too. *Incident: the banner appeared on `run` and
 not on `qualify`, which takes just as long.*
 
+**The bare command introduces the tool.** Typing the name with no
+arguments is a reader asking what this is, not a mistake. Answer with the
+mark and the command list on **stdout**, exit **0**. A wrong command or a
+missing flag stays an error on stderr with a non-zero exit. *Incident: the
+bare command answered with the argument parser's two-line error and exit
+2, naming `cmd` — an internal variable — as the thing that was missing;
+the tool's first contact with a stranger was a failure, and the one place
+it named an implementation detail at them.*
+
 **One entry point, named after the tool.** `tool <command>`, not
 `python -m package.module`. *Incident: a line published as a tool required
 the reader to know four separate module paths, none of them discoverable
