@@ -92,7 +92,50 @@ filter line-by-line.
 - No update mechanism, no telemetry, no first-run wizard. If a tool
   wants any of those, ask first whether it is really an application.
 
-## 8. README is the vitrine — tool skeleton
+## 8. The command-line experience
+
+A tool is met at its prompt, and these were each missing from a shipped
+Codechu tool before they were written down.
+
+**`--version` answers, and without a subcommand.** *Incident: a tool whose
+whole discipline is that every artefact carries a version stamp could not
+be asked its own — `--version` failed with "the following arguments are
+required: cmd".*
+
+**Every flag explains itself, and a test says so.** A flag with no help is
+a flag only its author can use, and argument parsers print the blank line
+without complaint — nothing fails when someone adds one. Walk the parser
+in a test and fail on a flag with empty help. *Incident: four naked flags
+had shipped, `--endpoint` among them; the test found two more the moment
+it ran.*
+
+**Chrome is optional; results are not.** A tool that takes minutes may
+print a product mark and progress. It must offer one flag that drops them
+— `-q` / `--quiet` — and that flag must never suppress results, warnings
+or errors. A quiet flag that can hide a failure is a footgun, not an
+option.
+
+**Draw the mark from its content, not from literals.** *Incident: a
+four-line banner box whose content line was one character wider than its
+border, in every release since it was written — the first thing a user
+sees, and nobody had looked at it.* Build the box from the strings it
+contains and hold the shape with a test across several version strings.
+
+**The mark is consistent across commands.** If one long-running command
+prints it, the others do too. *Incident: the banner appeared on `run` and
+not on `qualify`, which takes just as long.*
+
+**One entry point, named after the tool.** `tool <command>`, not
+`python -m package.module`. *Incident: a line published as a tool required
+the reader to know four separate module paths, none of them discoverable
+from the others.*
+
+**Set the program name.** Parsers default to the interpreter's path, so
+help reads `usage: python3.14 -m package.module` — a different string on
+every machine, and not a command anyone would type. Set `prog` to the
+command name.
+
+## 9. README is the vitrine — tool skeleton
 
 The vitrine principle from
 [STANDARDS §7.1](../STANDARDS.md#71-readme-is-the-vitrine) applies with
