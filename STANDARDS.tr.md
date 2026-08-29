@@ -238,6 +238,29 @@ bloğu ya da `assets/` referansı şart. Proje-tipi rehberleri
 [`RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md)) bu kuralı
 tip-spesifik iskeletlerle yeniden ifade eder.
 
+**Render kuralları (ölçüldü, varsayılmadı).** Aşağıdakilerin hepsi bir
+README'yi `gh api /markdown` ile render edip sayfaya BAKARAK bulundu;
+hiçbiri markdown kaynağı okunurken görünmüyor.
+
+- **GitHub repo sayfasında fold README değildir.** *1090 px genişlikte
+  ölçüldü: README ~1080 px aşağıda başlıyor; ilk ekran dosya listesi ve
+  About kutusu.* Sonuç: repo **description ve topics** — dosya değil,
+  ayar — sayfanın en çok okunan metnidir ve README ne kadar iyi olursa
+  olsun oraya ulaşmaz. İkisini de doldur, ve topic'ler description ile
+  çelişmesin.
+- **Aynı paragraftaki iki blockquote satırı tek satıra çöker.** İlkinin
+  sonuna `<br>` koy. *Vaka: iki satırlık bir beyit, yazıldığı günden beri
+  tek akan cümle olarak render ediliyordu.*
+- **Her badge link olmalı.** Hiçbir yere gitmeyen badge, sinyal
+  kostümü giymiş süstür. *Vaka: bir README'de dört badge'in üçü ölü
+  görseldi.*
+- **Komut satırları sütuna sığmalı** — ~60 karakterin altında. GitHub
+  code fence içinde sarmaz, keser. *Vaka: okurun gördüğü ilk komut
+  `# 80 tests, no networ` olarak render oldu.*
+- **Yazılabilir her şey dil etiketli fence içinde.** Dört boşlukla
+  girintilenmiş blok çıplak `<pre>` olarak render olur, highlight almaz;
+  girintiyi yalnız yazılamayan ASCII için sakla.
+
 ### 7.2 Araştırma & referans alt-ağacı (`docs/research/`)
 
 Bir karar dış literatüre veya bir ajanın eğitim verisinden yeni olabilecek
