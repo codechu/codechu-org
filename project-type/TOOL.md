@@ -168,7 +168,7 @@ a tool-flavoured skeleton:
 ## Limitations       what it cannot do, and what would change that
 ## Documentation     table with a "when you need it" column
 ---
-[footer: Contributing · Changelog · License]
+[footer: Contributing · Changelog · License · Part of Codechu]
 ```
 
 A tool whose product is a claim about the world — a benchmark, a

@@ -273,7 +273,13 @@ first impression, not last word. Treat it accordingly.
   [`overlay/PUBLISHED-VERDICT.md`](overlay/PUBLISHED-VERDICT.md) §2 —
   the sibling is often not published at all; name the relationship in a
   sentence and link the repository.)*
-- **License + credits** at the bottom.
+- **License + credits** at the bottom, and the footer **names the
+  family**: `Part of [Codechu](https://github.com/codechu).` It is the
+  only line that tells a reader arriving from a search result that this
+  repository has siblings, and it costs one line. *Incident: it lived in
+  two of the four per-type skeletons and in neither of the two written
+  later, so whether a repository carried it depended on which skeleton
+  its author happened to open.*
 
 **Explicit prohibitions in README:**
 

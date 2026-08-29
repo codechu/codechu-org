@@ -89,7 +89,7 @@ defends.**
 ## Documentation       TABLE with a "when you need it" column
 <details>Layout</details>
 ---
-[footer: seal image, Contributing · Changelog · License]
+[footer: seal image, Contributing · Changelog · License · Part of Codechu]
 ```
 
 **Maximum nine `##` sections.** Above nine, GitHub's outline menu
