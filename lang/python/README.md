@@ -9,6 +9,7 @@ library extractions.
 | [LIBRARY.md](LIBRARY.md) | Starting or maintaining a `codechu-*` library published to PyPI |
 | [APPLICATION.md](APPLICATION.md) | Starting or maintaining a Python end-user app (e.g. `disk-cleaner`) |
 | [PROPRIETARY.md](PROPRIETARY.md) | Starting or maintaining a **closed-source** Python library or app (private repo, license keys, signed wheels, etc.) |
+| [RELEASING.md](RELEASING.md) | Cutting a release: where the version lives, the generated long description, trusted publishing, the order that survives |
 
 These extend, never weaken, the org-wide rules in
 [`STANDARDS.md`](../../STANDARDS.md) and the language-agnostic
@@ -22,5 +23,5 @@ project-type rules in
 
 ## Active Python libraries
 
-See the roster in [`STANDARDS.md` §13](../../STANDARDS.md#13-active-repositories)
+See the roster in [`STANDARDS.md` §14](../../STANDARDS.md#14-active-repositories)
 and [`README.md`](../../README.md).

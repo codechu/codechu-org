@@ -142,6 +142,41 @@ Details: [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md).
 | Pre-release | `-alpha.N`, `-beta.N`, `-rc.N` |
 | Changelog | [Keep a Changelog](https://keepachangelog.com/) format |
 
+### 5.1 Cutting a release
+
+The version scheme above says what a number means. This says how one gets
+out, and every line of it was paid for.
+
+1. **One command moves every version record, and a test asserts they
+   agree.** Wherever a version is written more than once, moving them by
+   hand moves some of them. *Incident: a release bumped the packaging
+   metadata and left three other records behind, so every artefact that
+   release produced was stamped with a version that did not produce it.*
+2. **Write the changelog entry before the tag.** It is the release note;
+   nothing is written twice.
+3. **The tag is the only trigger, and pushing it is the human signature.**
+   No other event publishes. Nothing else should be able to.
+4. **Order the pipeline so everything that can fail runs before the
+   irreversible step**, and grant the job the permissions its *last* step
+   needs — not its first. Publication to a package index cannot be undone
+   or repeated. *Incident: a release job published to the index and then
+   failed creating the source-forge release for want of a write
+   permission; the dependent job behind it never ran, and no re-run could
+   repair the state, because the upload could not be replayed.*
+5. **Verify the artefacts, not the colour of the run** — in **both**
+   directions. A green run can leave a half-finished release, and a red
+   run can sit above a perfectly good one. Open the package index entry,
+   the release page, and whatever else the pipeline was supposed to touch.
+6. **The procedure names its tooling, and is re-read when the tooling
+   changes.** A documented step the pipeline no longer performs is worse
+   than no documentation, because it is followed. *Incident: a release
+   guide still instructed the operator to create the forge release by
+   hand, months after the workflow began creating it from the tag.*
+
+A failed release is not a private matter: if a version reached users in
+any state, say so in the changelog entry for that version rather than in
+a commit message nobody reads.
+
 ## 6. Repository discipline (every product)
 
 | Item | Rule |
