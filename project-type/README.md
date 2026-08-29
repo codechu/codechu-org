@@ -7,7 +7,7 @@ Language-specific extensions live in [`lang/`](../lang/).
 |---|---|---|
 | **Library** | Reusable component published to a package registry, consumed by other software | [LIBRARY.md](LIBRARY.md) |
 | **Application** | End-user product installed and run by a human | [APPLICATION.md](APPLICATION.md) |
-| **Research line** | A method, the pipeline that runs it, and an honest verdict about whether it works | [RESEARCH-LINE.md](RESEARCH-LINE.md) |
+| **Tool** | Software a developer installs and runs by hand to produce an artefact | [TOOL.md](TOOL.md) |
 | **Proprietary library** | Closed-source / source-available library sold to customers | [PROPRIETARY-LIBRARY.md](PROPRIETARY-LIBRARY.md) |
 | **Proprietary application** | Closed-source / source-available end-user application | [PROPRIETARY-APPLICATION.md](PROPRIETARY-APPLICATION.md) |
 
@@ -26,7 +26,7 @@ codechu-org/
 ├── project-type/
 │   ├── LIBRARY.md                     # any library (OSS-friendly)
 │   ├── APPLICATION.md                 # any app (OSS-friendly)
-│   ├── RESEARCH-LINE.md               # method + pipeline + verdict
+│   ├── TOOL.md                        # developer runs it, gets an artefact
 │   ├── PROPRIETARY-LIBRARY.md         # closed-source library extras
 │   └── PROPRIETARY-APPLICATION.md     # closed-source app extras
 └── lang/
@@ -37,3 +37,6 @@ codechu-org/
 ```
 
 Read in order: STANDARDS → project-type → lang. Each layer narrows.
+Disciplines that *add* rather than narrow — a repository whose product
+is a claim, for instance — live in [`overlay/`](../overlay/) and are
+adopted on top of a type.
