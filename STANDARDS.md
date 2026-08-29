@@ -192,13 +192,18 @@ first impression, not last word. Treat it accordingly.
   ASCII diagram of the data flow / architecture is a satisfying
   substitute. A wall of text is not.
 - **One quick example**, 5–15 lines, that a reader can run right
-  after install. Don't catalogue every variant.
+  after install. Don't catalogue every variant. *(Not applicable to
+  research lines — see
+  [`project-type/RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md) §2;
+  they carry `## Run it` plus a captured trace instead.)*
 - **Capability bullets**, not API tables. README lists *what you can
   do*; `docs/API.md` lists *every public symbol*.
 - **Deflect to `docs/`** for depth — API reference, recipes,
   migration, architecture. Each link gets a one-line description.
 - **Family table** (sibling Codechu packages) so visitors find the
-  ecosystem.
+  ecosystem. *(Not applicable to research lines — they are not
+  published to a registry; name the sibling relationship in a sentence
+  and link the repository.)*
 - **License + credits** at the bottom.
 
 **Explicit prohibitions in README:**
@@ -226,8 +231,34 @@ assets/
 
 By v0.1.0 the README must not be text-only. Either inline a Mermaid
 block or reference an `assets/` file. The per-project-type docs
-(`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) restate
-this rule with type-specific skeletons.
+([`project-type/LIBRARY.md`](project-type/LIBRARY.md),
+[`APPLICATION.md`](project-type/APPLICATION.md),
+[`RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md)) restate this rule
+with type-specific skeletons.
+
+**Rendering rules (measured, not assumed).** Each of these was found by
+rendering a README through `gh api /markdown` and looking at the page;
+none of them are visible while reading the markdown source.
+
+- **The README is not the fold on a GitHub repository page.** *Measured
+  on a 1090 px-wide capture: the README began ~1080 px down; the first
+  screen is the file listing and the About box.* Consequence: the repo
+  **description and topics** — settings, not files — are the most-read
+  text on the page, and no amount of README work reaches them. Set
+  them, and make sure the topics do not contradict the description.
+- **Two blockquote lines in one paragraph collapse into one line.** End
+  the first with a trailing `<br>`. *Incident: a two-line epigraph had
+  been rendering as a single running sentence since the day it was
+  written.*
+- **Every badge is a link.** A badge pointing nowhere is decoration
+  wearing the costume of a signal. *Incident: three of four badges in
+  one README were dead images.*
+- **Command lines must fit the column** — under ~60 characters. GitHub
+  does not wrap inside a code fence; it clips. *Incident: the first
+  command a reader saw rendered as `# 80 tests, no networ`.*
+- **Fence every typable thing with a language tag.** An indented
+  four-space block renders as a bare `<pre>` with no highlighting;
+  reserve indentation for non-typable ASCII.
 
 ### 7.2 Research & reference subtree (`docs/research/`)
 
@@ -427,7 +458,7 @@ layers extend it:
 
 | Layer | Path | Scope |
 |---|---|---|
-| Project type | [`project-type/`](project-type/) | Library vs application, any language |
+| Project type | [`project-type/`](project-type/) | Library, application, or research line; any language |
 | Language | [`lang/<name>/`](lang/) | Per-language extensions (Python today) |
 
 Read in order: STANDARDS → project-type → lang.

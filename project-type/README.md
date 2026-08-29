@@ -1,12 +1,13 @@
 # Project-type conventions (language-agnostic)
 
-Cross-cutting rules for the two kinds of thing Codechu builds.
+Cross-cutting rules for the kinds of thing Codechu builds.
 Language-specific extensions live in [`lang/`](../lang/).
 
 | Project type | Definition | Conventions |
 |---|---|---|
 | **Library** | Reusable component published to a package registry, consumed by other software | [LIBRARY.md](LIBRARY.md) |
 | **Application** | End-user product installed and run by a human | [APPLICATION.md](APPLICATION.md) |
+| **Research line** | A method, the pipeline that runs it, and an honest verdict about whether it works | [RESEARCH-LINE.md](RESEARCH-LINE.md) |
 | **Proprietary library** | Closed-source / source-available library sold to customers | [PROPRIETARY-LIBRARY.md](PROPRIETARY-LIBRARY.md) |
 | **Proprietary application** | Closed-source / source-available end-user application | [PROPRIETARY-APPLICATION.md](PROPRIETARY-APPLICATION.md) |
 
@@ -25,6 +26,7 @@ codechu-org/
 ├── project-type/
 │   ├── LIBRARY.md                     # any library (OSS-friendly)
 │   ├── APPLICATION.md                 # any app (OSS-friendly)
+│   ├── RESEARCH-LINE.md               # method + pipeline + verdict
 │   ├── PROPRIETARY-LIBRARY.md         # closed-source library extras
 │   └── PROPRIETARY-APPLICATION.md     # closed-source app extras
 └── lang/
