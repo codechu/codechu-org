@@ -140,10 +140,79 @@ Detay: [BRAND-GUIDELINES.md](BRAND-GUIDELINES.md).
 | Kural | Değer |
 |---|---|
 | Version şeması | [SemVer 2.0](https://semver.org/) |
-| Commit formatı | [Conventional Commits](https://www.conventionalcommits.org/) |
+| Commit formatı | §5.0'daki ikiden biri, `CONTRIBUTING.md`'de beyan edilir |
 | Release tag | `v<MAJOR>.<MINOR>.<PATCH>` |
 | Pre-release | `-alpha.N`, `-beta.N`, `-rc.N` |
-| Changelog | [Keep a Changelog](https://keepachangelog.com/) formatı |
+| Changelog | [Keep a Changelog](https://keepachangelog.com/) formatı, ya da §5.0'ın düzyazı biçimi |
+
+### 5.0 Geçmiş kimin için yazılıyor
+
+Bir commit konvansiyonu ya ondan bir şey TÜRETEN alete ya da onu
+ANLAMAK zorunda olan okura hizmet eder; ikisi aynı anda optimize
+edilemez. Depo başına bilinçli seç ve hangisi olduğunu `CONTRIBUTING.md`'de
+söyle. Aynı depo içinde karıştırmak ikisini de vermez.
+
+İkinci okur artık yalnız insan değil. Ajanlar bir sonraki adıma karar
+vermek için depo geçmişini okuyor ve bu ayrımın TÜRETME değil ANLAMA
+tarafındalar: `fix: correct banner width` onlara diff'te zaten
+göremeyecekleri hiçbir şey söylemez; neyin bozulduğunu ve nasıl fark
+edildiğini adlandıran bir gövde ise yeniden kuramayacakları kısımdır.
+
+| Konvansiyon | Şu durumda seç | Kazandığın | Verdiğin |
+|---|---|---|---|
+| [Conventional Commits](https://www.conventionalcommits.org/) + Keep a Changelog | Geçmiş bir GİRDİ: sürümü, changelog'u ve notları release aleti ondan türetiyor | Otomatik release (release-please, semantic-release), makine-okunur değişim türleri | Başlık satırı bir tür ve bir özettir; "neden"e yer kalmaz |
+| **Vaka düzyazısı** | Geçmiş, sonradan birinin — bir insanın ya da bir ajanın — bir kararı anlamak için okuyacağı kayıt; release'ler kendi kapılarıyla elle kesiliyor | Değişikliği cümle olarak söyleyen bir başlık ve cevap verdiği arızayı adlandıran bir gövde | Hiçbir otomasyon ondan sürüm ya da not türetemez; changelog girdisini sen yazarsın |
+
+**Vaka düzyazısı seçildiğinde bu bir konvansiyondur, konvansiyonsuzluk
+değil:**
+
+- Başlık, değişikliği cümle olarak söyler — tür öneki değil, diff özeti
+  değil.
+- Gövde vakayı adlandırır: ne bozuktu, nasıl fark edildi, neyin
+  yakalaması gerekirdi. Arkasında vaka olmayan değişiklik bunu söyler.
+- Kıran değişiklik, changelog girdisinin İLK satırında söylenir; çünkü
+  `!` işaretini okuyacak bir makine yok.
+- Changelog girdisi elle yazılır ve release notudur.
+
+Hiçbiri ötekinin garantilerini atlama ruhsatı değildir. Vaka düzyazısı
+kullanan bir depo yine `v<MAJOR>.<MINOR>.<PATCH>` etiketler, yine her
+release için changelog girdisi yazar, yine kıran değişikliği işaretler —
+yalnızca bunları bir aletin çıkarmasını beklemez.
+
+### 5.1 Release kesmek
+
+Yukarıdaki şema bir sayının ne anlama geldiğini söyler. Burası bir
+sürümün nasıl çıktığını söyler, ve her satırının bedeli ödendi.
+
+1. **Tek komut bütün sürüm kayıtlarını taşır, ve bir test uyuştuklarını
+   iddia eder.** Bir sürüm birden fazla yere yazılıyorsa, elle taşımak
+   BAZILARINI taşır. *Vaka: bir release paketleme metadata'sını bumpladı
+   ve diğer üç kaydı geride bıraktı; o release'in ürettiği her artefakt,
+   onu üretmemiş bir sürümle damgalandı.*
+2. **Changelog girdisini tag'den ÖNCE yaz.** O, release notudur; hiçbir
+   şey iki kez yazılmaz.
+3. **Tetik yalnızca tag'dir, ve onu push etmek insan imzasıdır.** Başka
+   hiçbir olay yayımlamaz. Başka hiçbir şey yayımlayabiliyor olmamalı.
+4. **Hattı, düşebilecek her şey GERİ ALINAMAZ adımdan önce koşacak
+   şekilde sırala**, ve job'a İLK değil **SON** adımının istediği izni
+   ver. Paket indeksine yayım geri alınamaz ve tekrarlanamaz. *Vaka: bir
+   release job'ı indekse yayımladı ve ardından yazma izni olmadığı için
+   forge release'ini oluştururken düştü; arkasındaki bağımlı job hiç
+   koşmadı ve hiçbir yeniden-koşu durumu onaramadı, çünkü yükleme
+   tekrarlanamıyordu.*
+5. **Koşunun RENGİNİ değil ARTEFAKTI doğrula** — ve **iki yönde**. Yeşil
+   bir koşu yarım kalmış bir release bırakabilir; kırmızı bir koşu
+   gayet sağlam bir sürümün üstünde durabilir. Paket indeksi sayfasını,
+   release sayfasını ve hattın dokunması gereken her şeyi AÇ.
+6. **Prosedür aletini ADLANDIRIR, ve alet değişince yeniden okunur.**
+   Hattın artık yapmadığı bir adımı anlatan belge, belgesizlikten
+   kötüdür — çünkü izlenir. *Vaka: bir release rehberi, workflow tag'den
+   forge release'ini oluşturmaya başladıktan aylar sonra hâlâ operatöre
+   onu elle açmasını söylüyordu.*
+
+Başarısız bir release özel mesele değildir: bir sürüm kullanıcılara
+herhangi bir hâlde ulaştıysa, bunu kimsenin okumadığı bir commit
+mesajında değil, o sürümün changelog girdisinde söyle.
 
 ## 6. Repo disiplini (her ürün)
 
