@@ -192,13 +192,18 @@ first impression, not last word. Treat it accordingly.
   ASCII diagram of the data flow / architecture is a satisfying
   substitute. A wall of text is not.
 - **One quick example**, 5–15 lines, that a reader can run right
-  after install. Don't catalogue every variant.
+  after install. Don't catalogue every variant. *(Not applicable to
+  research lines — see
+  [`project-type/RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md) §2;
+  they carry `## Run it` plus a captured trace instead.)*
 - **Capability bullets**, not API tables. README lists *what you can
   do*; `docs/API.md` lists *every public symbol*.
 - **Deflect to `docs/`** for depth — API reference, recipes,
   migration, architecture. Each link gets a one-line description.
 - **Family table** (sibling Codechu packages) so visitors find the
-  ecosystem.
+  ecosystem. *(Not applicable to research lines — they are not
+  published to a registry; name the sibling relationship in a sentence
+  and link the repository.)*
 - **License + credits** at the bottom.
 
 **Explicit prohibitions in README:**
@@ -226,8 +231,10 @@ assets/
 
 By v0.1.0 the README must not be text-only. Either inline a Mermaid
 block or reference an `assets/` file. The per-project-type docs
-(`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) restate
-this rule with type-specific skeletons.
+([`project-type/LIBRARY.md`](project-type/LIBRARY.md),
+[`APPLICATION.md`](project-type/APPLICATION.md),
+[`RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md)) restate this rule
+with type-specific skeletons.
 
 ### 7.2 Research & reference subtree (`docs/research/`)
 
@@ -427,7 +434,7 @@ layers extend it:
 
 | Layer | Path | Scope |
 |---|---|---|
-| Project type | [`project-type/`](project-type/) | Library vs application, any language |
+| Project type | [`project-type/`](project-type/) | Library, application, or research line; any language |
 | Language | [`lang/<name>/`](lang/) | Per-language extensions (Python today) |
 
 Read in order: STANDARDS → project-type → lang.

@@ -195,13 +195,17 @@ gördüğü ilk şey — son söz değil, ilk izlenim. Buna göre davran.
   ASCII diyagram doyurucu bir alternatiftir. Düz metin duvarı kabul
   edilemez.
 - **Tek hızlı örnek**, 5–15 satır, kurulumdan hemen sonra
-  çalıştırılabilir olsun. Her varyantı sıralama.
+  çalıştırılabilir olsun. Her varyantı sıralama. *(Araştırma hatları
+  için geçersiz —
+  [`project-type/RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md) §2;
+  onun yerine `## Run it` + gerçek yakalanmış iz gelir.)*
 - **Yetenek bullet'ları**, API tabloları değil. README *yapabildiklerini*
   listeler; `docs/API.md` *her public sembolü* listeler.
 - **`docs/`'a yönlendir** — API referansı, recipe'ler, migration,
   mimari için. Her link tek satır açıklama ile gelsin.
 - **Family tablosu** (kardeş Codechu paketleri) — ziyaretçi
-  ekosistemi bulabilsin.
+  ekosistemi bulabilsin. *(Araştırma hatları için geçersiz — registry'ye
+  yayımlanmıyorlar; kardeşlik tek cümleyle söylenir ve repo linklenir.)*
 - **Lisans + credits** en altta.
 
 **README'de açık yasaklar:**
@@ -229,7 +233,9 @@ assets/
 
 v0.1.0 itibarıyla README sadece-metin olamaz. Ya inline bir Mermaid
 bloğu ya da `assets/` referansı şart. Proje-tipi rehberleri
-(`project-type/LIBRARY.md`, `project-type/APPLICATION.md`) bu kuralı
+([`project-type/LIBRARY.md`](project-type/LIBRARY.md),
+[`APPLICATION.md`](project-type/APPLICATION.md),
+[`RESEARCH-LINE.md`](project-type/RESEARCH-LINE.md)) bu kuralı
 tip-spesifik iskeletlerle yeniden ifade eder.
 
 ### 7.2 Araştırma & referans alt-ağacı (`docs/research/`)
