@@ -534,7 +534,21 @@ Yeni bir ürün edge case ortaya çıkardığında bu dosya PR ile güncellenir.
 `STANDARDS.md`'ye dokunan bir PR başlığında **breaking change**
 etiketlenir — tüm ürün repolarına yansıyabilir.
 
-## 13. Aktif repolar
+## 13. Katmanlı sözleşmeler
+
+Bu dosya dilden bağımsız, organizasyon geneli katmandır. Onu iki dar
+katman genişletir:
+
+| Katman | Yol | Kapsam |
+|---|---|---|
+| Proje tipi | [`project-type/`](project-type/) | Library, tool ya da application; dil farketmez |
+| Dil | [`lang/<ad>/`](lang/) | Dile özgü ekler (bugün Python) |
+| Overlay | [`overlay/`](overlay/) | Her tipin benimseyebileceği disiplinler; daraltmaz, ekler |
+
+Okuma sırası: STANDARDS → project-type → lang, ardından reponun
+benimsediği overlay'ler.
+
+## 14. Aktif repolar
 
 ### Organizasyon geneli
 - [codechu/codechu-org](https://github.com/codechu/codechu-org) — bu repo (PUBLIC, standartlar)
